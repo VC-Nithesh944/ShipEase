@@ -1,0 +1,9 @@
+Layout width/height: Use vw, vh, % for responsiveness.
+Font sizes: Use rem for consistency across devices.
+Padding/margin: Use % or em for flexible spacing.
+Images: Use max-width: 100% to ensure images resize within their containers.
+
+Best Practices for Compatibility:
+Avoid fixed pixel sizes (px) for width, height, and font sizes.
+Use relative or viewport-based units (%, vw, vh, rem, em) for a more responsive design.
+Combine with media queries to handle different screen sizes and device types effectively.
