@@ -162,7 +162,6 @@ nav.navbar ul li a {                  /*To style the Main Navbar*/
 }
 
 .wrapper .login-form {                /*Designing the Embedded Login Form*/
-
     position: absolute;
     top: 55%;
     left: 73%;
@@ -206,14 +205,15 @@ h2{                                   /*The Login Text in login page*/
     width: 100%;
     height: 100%;
     background: transparent;
-    border: none;
+    padding-right : 35px;
+    border: 0.5px solid black;
+    border-radius: 5px;
     outline: none;
-    border-bottom : 2.5px solid black;
 }
 
 .input-box label{
     position: absolute;
-    top: -8%;
+    top: -19%;
     left: 0;
     transform : translateY(-50%);
     font-size: 16px;
@@ -223,8 +223,8 @@ h2{                                   /*The Login Text in login page*/
 
 .input-box i{
     position: absolute;
-    top: 55%;
-    right: 0;
+    top: 50%;
+    right: 2%;
     transform: translateY(-50%);
     size-adjust: 150%;
 }
@@ -242,10 +242,11 @@ h2{                                   /*The Login Text in login page*/
     -webkit-text-stroke: 1px;
 }
 .wrapper .line{
-    position : absolute;
-    height:95%;
-    width: 1px;
+    position:absolute;
+    height:100%;
+    width: 2px;
     left : 48%;
+    top: -2.5%;
     background: #000;
     margin: 15px;
     box-shadow: 0 0 7px 3px rgba(0, 0, 0, 0.1);
@@ -267,12 +268,13 @@ h2{                                   /*The Login Text in login page*/
     margin: 20px;
 }
 
+
 .logreg-link{                         /*The already have and account text*/
     position: relative;
     left : 13%;
 }
 
-.signreg-link{                       /*The Dont have an account text */
+.signreg-link{                       /*The Don't have an account text */
     position: relative;
     left : 13%;
 }
@@ -284,4 +286,30 @@ h2{                                   /*The Login Text in login page*/
 
 .signup-form a:hover{
     text-decoration: none;
+}
+
+/* Image slider on the left */
+.image-slider {
+    width: 49.5%;  /* Adjust the width as per your layout */
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 20px ;
+    border-bottom-left-radius: 20px;
+}
+
+/* Slide styling */
+.image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure images cover the container properly */
+    position: absolute;
+    top: 0;
+    left: 100%;  /* Start offscreen */
+    transition: left 0.5s ease-in-out;
+}
+
+/* Active slide */
+.image-slider img.active {
+    left: 0; /* Move the active slide into view */
 }
