@@ -1,40 +1,46 @@
 @import url("'https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900;&display=swap'");
 
 *{                                      /*The Code that default gets applied for Entire page*/
-    margin: 0;
-    padding : 0;
+    margin: 0%;
+    padding : 0%;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }  
 
 body{                                  /*The Code that gets applied to Body of Html*/
     display: flex;
-    background-color: #ffffff;
-    justify-content: center;
-    align-items: center;
+    background-color: white;
+    /* justify-content: center;
+    align-items: center; */
     min-height: 100vh;
 }
 
 .container {
-    margin: 10;
-    padding: 0;
+    margin: 0%;
+    padding: 0%;
+}
+.logo img{
+    width:14%;
+    height: 9%;
 }
 
 nav.navbar{                            /*CSS to determine the position of Navbar*/
     display: flex;
-    background-color: #ffffff;
+    background-color: #E0F8F9;
     position: fixed;
-    top: 15px; left:450px ;
-    width: 60%;
+    top: 0%; left:0% ;
+    width: 100vw;
 }
 
 nav.navbar2{                           /*CSS to determine the position of login and Signup*/
     display : flex;
-    background-color: #ffffff;
+    background-color: #E0F8F9;
     position: fixed;
-    top: 15px; left :1200px;
-    width: 40%;
+    top: 0px; left :1226px;
+    width: 18%;
 }
+
+
 
 nav.navbar2 ul li a.sign1{              /*For designing the Signup block or Button*/
     -webkit-text-stroke: 1px white;
@@ -66,14 +72,18 @@ nav.navbar2 ul li a.sign1:hover{
 }
 nav.navbar2 ul{                        /*To Order then Horizontally*/
     list-style-type: none;   
-    margin: 0; right: 50px;
-    padding: 10px 20px;
+    margin: 0%; 
+    padding: 8% 5%;
 }
 
 nav.navbar ul{
     list-style-type: none;   
-    margin: 0; right: 50px;
-    padding: 10px 20px;
+    margin: 0%; right: 39%; left:6%;
+    padding: 1.6% 0% 1.6% 41%;
+    position: absolute;
+    /* width: 40vw; */
+    width: 80%;
+    background-color:#E0F8F9 ;
 }
 nav.navbar2 ul li{                    /*To convert it into box*/
     margin: 0 15px;
