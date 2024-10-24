@@ -1,0 +1,121 @@
+/* General Page Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #cdfaff;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.page-header {
+    background-color: #00e5ff;
+    color: #ffffff;
+    padding: 50px 0;
+    text-align: center;
+}
+.page-header .img{
+    width: 10%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left : 0;
+    z-index: 1;
+    border: 2px solid #00e5ff;
+}
+
+.page-header h1 {
+    font-size: 48px;
+    margin: 0;
+}
+
+/* About Us Intro Section */
+.about-intro {
+    padding: 50px 0;
+    background-color: #ffffff;
+    text-align: center;
+}
+
+.about-intro p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Mission Section */
+.about-mission {
+    background-color: #85f3ff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.about-mission h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Team Section */
+.about-team {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.about-team h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.team-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.team-images img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Gallery Section */
+.about-gallery {
+    background-color: #85f3ff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.about-gallery h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.gallery-images img {
+    width: 300px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Footer Section */
+.page-footer {
+    background-color: #00e5ff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
