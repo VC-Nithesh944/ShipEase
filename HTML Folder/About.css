@@ -1,6 +1,6 @@
 /* General Page Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family : 'Poppins';
     margin: 0;
     padding: 0;
     background-color: #cdfaff;
@@ -19,12 +19,13 @@ body {
     text-align: center;
 }
 .page-header .img{
-    width: 10%;
+    width: 168.5px;
     height: auto;
-    position: absolute;
+    position:absolute;
     top: 0;
     left : 0;
-    z-index: 1;
+    z-index: 0;
+
     border: 2px solid #00e5ff;
 }
 
@@ -33,7 +34,6 @@ body {
     margin: 0;
 }
 
-/* About Us Intro Section */
 .about-intro {
     padding: 50px 0;
     background-color: #ffffff;
@@ -118,4 +118,7 @@ body {
     text-align: center;
     padding: 20px 0;
     margin-top: 50px;
+}
+.page-footer p{
+    font-size: 22px;
 }
