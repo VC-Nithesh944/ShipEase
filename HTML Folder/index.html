@@ -1,18 +1,19 @@
-<!-- This is the Home page-->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ShipEase</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style2.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class = "container" >
-        <ul><li class="logo"><img src="/HTML Folder/Pictures/logo.png" alt="SH"></li></ul>
-        <nav class ="navbar" id="navigation">                             <!-- navbar with all features -->
+    <!-- Navbar Container -->
+    <div class="container">
+        <div class="logo">
+            <img src="/HTML Folder/Pictures/logo.png" alt="SH" style="height: 30px;">
+        </div>
+        <nav class="navbar">
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/transport">Transport</a></li>
@@ -21,75 +22,68 @@
                 <li><a href="/contact">Contact</a></li>
             </ul>
         </nav>
-        <nav class="navbar2" id="navigation2">                           <!-- navbar2 that contains Login and Signup Buttons -->
+        <nav class="navbar2">
             <ul>
-                <li ><a class="log" href="#" onclick="showLoginForm()">LOGIN</a></li>
-                <li ><a class="sign1" href="#" onclick="showSignUpForm()">SIGN UP</a></li>
+                <li><a class="log" href="#" onclick="showLoginForm()">LOGIN</a></li>
+                <li><a class="sign1" href="#" onclick="showSignUpForm()">SIGN UP</a></li>
             </ul>
         </nav>
     </div>
+
+    <!-- Wrapper for Forms -->
     <div class="wrapper" id="wrapped">
-        <div class="image-slider">
-            <img src="/HTML Folder/Pictures/image1.png" alt="Image 1" class="slide active">
-            <img src="/HTML Folder/Pictures/image2.png" alt="Image 2" class="slide">
-            <img src="/HTML Folder/Pictures/image3.png" alt="Image 3" class="slide">
-        </div>
-        <div class="line"></div>
-        <!-- This is the Code for Embedded Login Page-->
-        <div class="login-form" id = "LoginForm" style = "display:none">
+        <!-- Login Form -->
+        <div class="login-form" id="LoginForm" style="display:none">
             <h2>Login</h2>
             <form action="#">
                 <div class="input-box">
-                    <input type ="text" name = "name" required>
-                    <label>Name</label><i class='bx bxs-user' style="font-size: 25px;"></i>
-                </div>
-                <div class = "input-box">
-                    <input type="password" name = "password" required>
-                    <label>Password</label><i class='bx bxs-lock-alt' style="font-size: 25px;"></i>
-                </div>
-                <div class = "input-box1">
-                    <input type="checkbox" name="remember-me">
-                    <label>Remember me</label>
-                </div>
-                <div class="input-box">
-                <button type="submit" class="btn">Login</button>
-                </div>
-                <div class="logreg-link">
-                    <p>Don't have an Account?<a href="#" onclick="showSignUpForm()">Sign Up</a></p>
-                </div>
-                </div>
-            </form>
-            <!-- This is the Code for Embedded Signup Page-->
-        <div class="signup-form" id="SignupForm" style="display: none">
-            <h2 class = sign>Sign Up</h2>
-            <form action="#">
-                <div class = "input-box">
                     <input type="text" name="name" required>
-                    <label>Name</label><i class='bx bxs-user' style="font-size: 25px;"></i>
-                </div>
-                <div class = "input-box">
-                    <input type="email" name="Email" required>
-                    <label>Email</label><i class='bx bxs-envelope' style="font-size: 25px;"></i>
-                </div>
-                <div class = "input-box">
-                    <input type="password" name="Password" required>
-                    <label>Password</label><i class='bx bxs-lock-alt' style="font-size: 25px;"></i>
-                </div>
-                <div class = "input-box">
-                    <input type="password" name="Confirm Password" required>
-                    <label>Confirm Password</label><i class='bx bxs-lock-alt' style="font-size: 25px;"></i>
+                    <label>Name</label>
                 </div>
                 <div class="input-box">
-                    <button type="submit" class="btn">Sign Up</button>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
                 </div>
-                <div class="signreg-link">
-                    <p>Already have an Account? <a href="#" onclick="showLoginForm()">Login</a></p>
+                <div class="input-box">
+                    <input class="rm" type="checkbox" name="remember-me">
+                    <label class="rme">Remember me</label>
                 </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="logreg-link">
+                    <p>Don't have an account? <a href="#" onclick="showSignUpForm()">Sign Up</a></p>
                 </div>
             </form>
+        </div>
+
+        <!-- Signup Form -->
+        <div class="signup-form" id="SignupForm" style="display:none">
+            <h2>Sign Up</h2>
+            <form action="#">
+                <div class="input-box">
+                    <input type="text" name="name" required>
+                    <label>Name</label>
+                </div>
+                <div class="input-box">
+                    <input type="email" name="email" required>
+                    <label>Email</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="input-box">
+                    <input type="password" name="confirm_password" required>
+                    <label>Confirm Password</label>
+                </div>
+                <button type="submit" class="btn">Sign Up</button>
+                <div class="signreg-link">
+                    <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <!-- The script of Login button to display the login form -->
-    <script src="script.js">    </script>
+    <!-- JavaScript for Form Toggle -->
+    <script src="script.js"></script>
 </body>
 </html>
