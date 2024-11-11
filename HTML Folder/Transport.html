@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport</title>
+    <link rel="stylesheet" href="Transport.css">
+</head>
+
+<body>
+    <header class="page-header">
+        <img class="img" src="Pictures/logo.png" alt="ShipEase Logo">
+        <h1>Road Transport</h1>
+    </header>
+
+    <div class="card ups-card">
+        <h1>Create a Shipment</h1>
+        <p>* Indicates required field</p>
+    </div>
+
+    <div style="display: flex;">
+        <!-- Slideshow Container -->
+        <div class="slideshow">
+            <img src="Pictures/image1.png" alt="Slide 1" class="slide">
+            <img src="Pictures/image2.png" alt="Slide 2" class="slide">
+            <img src="Pictures/image3.png" alt="Slide 3" class="slide">
+        </div>
+        <div class="grey-box">
+            <div class="transit-close-div">
+                <div>
+                    <button type="button">×</button>
+                </div>
+            </div>
+            <div class="row">
+                <div>
+                    <label>From<span>*</span></label><br>
+                    <input type="text" id="sourceLocation" name="sourceLocation" placeholder="Enter a location">
+                </div>
+                <div>
+                    <label>To<span>*</span></label><br>
+                    <input type="text" id="destinationLocation" name="destinationLocation"
+                        placeholder="Enter a location">
+                </div>
+                <div>
+                    <label>Weight (in kgs)<span>*</span></label><br>
+                    <input type="text" id="weightInKg" name="weightInKg" placeholder="kgs" maxlength="7">
+                </div>
+                <div>
+                    <button type="button">VOLUME WEIGHT CALCULATOR</button>
+                </div>
+                <div>
+                    <label>Booking Date<span>*</span></label><br>
+                    <input type="text" id="bookingDate" name="bookingDate" placeholder="DD-MM-YYYY">
+                </div>
+
+                <div>
+                    <label>Booking Time<span>*</span></label><br>
+                    <input type="text" id="bookingTime" name="bookingTime" placeholder="--:-- AM/PM">
+                </div>
+            </div>
+            <div>
+                <span>*</span><i>Indicates required fields.</i><br><br>
+                <button type="button" onclick="return validateForm()" data-toggle="modal"
+                    data-target="#modalAlertMsg1">FIND</button>
+                <button type="reset" onclick="resetValues()">RESET</button><br><br>
+                <a id="transitFinderInfoBtn" data-toggle="modal" onclick="openInformationPopup()"
+                    data-target="#transitFinderInfo">
+                    <span>Transit Time and Price Finder Info</span>
+                    <span class="glyphicon glyphicon-info-sign"></span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer class="page-footer">
+        <p>&copy; 2024 ShipEase. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
+</body>
+
+</html>
