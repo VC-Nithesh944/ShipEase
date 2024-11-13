@@ -11,28 +11,26 @@
 <body>
     <header class="page-header">
         <img class="img" src="Pictures/logo.png" alt="ShipEase Logo">
-        <h1>Road Transport</h1>
+        <h1>ROAD TRANSPORT</h1>
     </header>
-
-    <div class="card ups-card">
-        <h1>Create a Shipment</h1>
-        <p>* Indicates required field</p>
+    <div class="background-div">
+        <div class="overlay">
+            <h1>ROAD FREIGHT TRANSPORT SOLUTIONS FOR YOU</h1>
+            <p>We handle your transports via road from point A to point B. As a global service provider, we maintain an extensive network structure on various continents for road freight transports. We offer individual and economic solutions based on the weight of your goods as well as the volume.</p>
+        </div>
     </div>
-
-    <div style="display: flex;">
+    <div class="box">
         <!-- Slideshow Container -->
         <div class="slideshow">
-            <img src="Pictures/image1.png" alt="Slide 1" class="slide">
+            <img src="Pictures/r1.jpg" alt="Slide 1" class="slide">
             <img src="Pictures/image2.png" alt="Slide 2" class="slide">
-            <img src="Pictures/image3.png" alt="Slide 3" class="slide">
+            <img src="Pictures/r3.jpg" alt="Slide 3" class="slide">
         </div>
         <div class="grey-box">
-            <div class="transit-close-div">
-                <div>
-                    <button type="button">×</button>
-                </div>
-            </div>
             <div class="row">
+                <div class="card ups-card">
+                    <h1>Create a Shipment</h1>
+                </div>
                 <div>
                     <label>From<span>*</span></label><br>
                     <input type="text" id="sourceLocation" name="sourceLocation" placeholder="Enter a location">
@@ -42,9 +40,31 @@
                     <input type="text" id="destinationLocation" name="destinationLocation"
                         placeholder="Enter a location">
                 </div>
-                <div>
-                    <label>Weight (in kgs)<span>*</span></label><br>
-                    <input type="text" id="weightInKg" name="weightInKg" placeholder="kgs" maxlength="7">
+                <div class="container">
+                    <!-- Box image on the left -->
+                    <div class="box-image">
+                        <img src="Pictures/box.avif" alt="Box" style="width: 100%;">
+                    </div>
+                
+                    <!-- Input fields on the right -->
+                    <div class="input-fields">
+                        <div class="input-group">
+                            <label for="weight">Weight*</label>
+                            <input type="number" id="weight" placeholder="kg">
+                        </div>
+                        <div class="input-group">
+                            <label for="length">Length*</label>
+                            <input type="number" id="length" placeholder="cm">
+                        </div>
+                        <div class="input-group">
+                            <label for="width">Width*</label>
+                            <input type="number" id="width" placeholder="cm">
+                        </div>
+                        <div class="input-group">
+                            <label for="height">Height*</label>
+                            <input type="number" id="height" placeholder="cm">
+                        </div>
+                    </div>
                 </div>
                 <div>
                     <button type="button">VOLUME WEIGHT CALCULATOR</button>
