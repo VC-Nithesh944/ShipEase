@@ -152,19 +152,93 @@ body {
         text-align: center;
 }
 .headlogo{
-    
-      
-        align-items: center;       
-        justify-content: center;    
-        padding: 10px;              
-        background-color: #f0f0f0; 
+                   
+        background-color: #85f3ff; 
         height: auto;
         width: auto; 
 }
 
 .media-container{
-    width: 80%;
-    max-width: 700px;
-    margin: 0 auto;
-    background-color: aliceblue;
+        display:flex;                /* Use flex layout */
+        justify-content:space-evenly; /* Space logos evenly */
+        align-items:center;          /* Center logos vertically */
+        flex-wrap:wrap;              /* Wrap to next line on small screens */
+        gap: 20px;                    /* Space between logos */
+        padding: 20px;                /* Optional padding around container */
+}
+
+.insta{
+          /* Smooth transition on hover *//* Center icon within the container */
+        display: inline-block;
+        color: black;
+        font-size: 80px;
+          height: auto;
+          width: auto; 
+}
+.facebook{
+    display: inline-block;
+    font-size: 80px;
+      height: auto;
+      width: auto; 
+}
+.twitter{
+    display: inline-block;
+    font-size: 80px;
+      height: auto;
+      width: auto;
+}
+
+a{
+    color: black;
+}
+
+.footer{
+    margin-top: 15px;
+    
+}
+.foot-panel{
+    background-color: #37475a;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+
+}
+
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul{
+    margin-top: 20px;
+}
+
+ul a{
+display: block;
+font-size: 0.85rem;
+margin-top: 10px;
+color:white;
+}
+
+.foot-panel4{
+    background-color:#0f1111;
+    color:white;
+    height:80px;
+    font-size: 0.7rem;
+    text-align: center;
+    /* display: flex;
+    justify-content: center;
+    align-items:center; */
+}
+.pages{
+   padding-top:25px;
+}
+.copyright{
+    padding-top:5px;
 }
