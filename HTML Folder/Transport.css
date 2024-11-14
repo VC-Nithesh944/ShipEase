@@ -132,6 +132,24 @@ a {
 a:hover {
     text-decoration: underline;
 }
+.location-container {
+    display: flex;
+    gap: 20px; /* Adds space between the From and To fields */
+}
+
+.location-field {
+    flex: 1; /* Allows each field to take up equal space */
+}
+select{
+    width: 100%;
+    padding: 5px; /* Optional: to match input fields styling */
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
 
 /*  */
 .slideshow {
@@ -172,9 +190,10 @@ a:hover {
 .container {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 20px;
+    justify-content: left;
+    gap: 77px;
     padding: 20px;
+    margin-top: 51px;
 }
 
 /* Image container */

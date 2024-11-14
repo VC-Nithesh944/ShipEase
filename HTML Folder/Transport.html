@@ -10,13 +10,15 @@
 
 <body>
     <header class="page-header">
-        <a href="index.html"><img class="img" src="Pictures/logo.png" alt="ShipEase Logo"></a>
+        <img class="img" src="Pictures/logo.png" alt="ShipEase Logo">
         <h1>ROAD TRANSPORT</h1>
     </header>
     <div class="background-div">
         <div class="overlay">
             <h1>ROAD FREIGHT TRANSPORT SOLUTIONS FOR YOU</h1>
-            <p>We handle your transports via road from point A to point B. As a global service provider, we maintain an extensive network structure on various continents for road freight transports. We offer individual and economic solutions based on the weight of your goods as well as the volume.</p>
+            <p>We handle your transports via road from point A to point B. As a global service provider, we maintain an
+                extensive network structure on various continents for road freight transports. We offer individual and
+                economic solutions based on the weight of your goods as well as the volume.</p>
         </div>
     </div>
     <div class="box">
@@ -31,7 +33,7 @@
                 <div class="card ups-card">
                     <h1>Create a Shipment</h1>
                 </div>
-                <div>
+                <!-- <div>
                     <label>From<span>*</span></label><br>
                     <input type="text" id="sourceLocation" name="sourceLocation" placeholder="Enter a location">
                 </div>
@@ -39,13 +41,39 @@
                     <label>To<span>*</span></label><br>
                     <input type="text" id="destinationLocation" name="destinationLocation"
                         placeholder="Enter a location">
+                </div> -->
+                <div class="location-container">
+                    <div class="location-field">
+                        <label for="sourceLocation">From<span>*</span></label><br>
+                        <select id="sourceLocation" name="sourceLocation" required>
+                            <option value="" disabled selected>Select a location</option>
+                            <option value="new_york">New York</option>
+                            <option value="los_angeles">Los Angeles</option>
+                            <option value="chicago">Chicago</option>
+                            <option value="houston">Houston</option>
+                            <option value="miami">Miami</option>
+                        </select>
+                    </div>
+
+                    <div class="location-field">
+                        <label for="destinationLocation">To<span>*</span></label><br>
+                        <select id="destinationLocation" name="destinationLocation" required>
+                            <option value="" disabled selected>Select a location</option>
+                            <option value="new_york">New York</option>
+                            <option value="los_angeles">Los Angeles</option>
+                            <option value="chicago">Chicago</option>
+                            <option value="houston">Houston</option>
+                            <option value="miami">Miami</option>
+                        </select>
+                    </div>
                 </div>
+
                 <div class="container">
                     <!-- Box image on the left -->
                     <div class="box-image">
                         <img src="Pictures/box.avif" alt="Box" style="width: 100%;">
                     </div>
-                
+
                     <!-- Input fields on the right -->
                     <div class="input-fields">
                         <div class="input-group">
@@ -71,12 +99,18 @@
                 </div>
                 <div>
                     <label>Booking Date<span>*</span></label><br>
-                    <input type="text" id="bookingDate" name="bookingDate" placeholder="DD-MM-YYYY">
+                    <!-- <input type="text" id="bookingDate" name="bookingDate" placeholder="DD-MM-YYYY"> -->
+                    <input type="date" id="bookingDate" name="bookingDate" min="2023-02-24">
                 </div>
 
                 <div>
-                    <label>Booking Time<span>*</span></label><br>
+                    <label>Booking Type<span>*</span></label><br>
                     <input type="text" id="bookingTime" name="bookingTime" placeholder="--:-- AM/PM">
+                    <!-- <select id="bookingTime" name="bookingTime" required>
+                        <option value="" disabled selected>Select</option>
+                        <option value="los_angeles">Normal</option>
+                        <option value="new_york">Express</option>
+                        <option value="los_angeles">Refrigerated</option> -->
                 </div>
             </div>
             <div>
@@ -84,11 +118,10 @@
                 <button type="button" onclick="return validateForm()" data-toggle="modal"
                     data-target="#modalAlertMsg1">FIND</button>
                 <button type="reset" onclick="resetValues()">RESET</button><br><br>
-                <a id="transitFinderInfoBtn" data-toggle="modal" onclick="openInformationPopup()"
+                <!-- <a id="transitFinderInfoBtn" data-toggle="modal" onclick="openInformationPopup()"
                     data-target="#transitFinderInfo">
                     <span>Transit Time and Price Finder Info</span>
-                    <span class="glyphicon glyphicon-info-sign"></span>
-                </a>
+                </a> -->
             </div>
         </div>
     </div>
