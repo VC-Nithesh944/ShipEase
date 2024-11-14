@@ -33,40 +33,42 @@
                 <div class="card ups-card">
                     <h1>Create a Shipment</h1>
                 </div>
-                <!-- <div>
-                    <label>From<span>*</span></label><br>
-                    <input type="text" id="sourceLocation" name="sourceLocation" placeholder="Enter a location">
-                </div>
-                <div>
-                    <label>To<span>*</span></label><br>
-                    <input type="text" id="destinationLocation" name="destinationLocation"
-                        placeholder="Enter a location">
-                </div> -->
                 <div class="location-container">
                     <div class="location-field">
                         <label for="sourceLocation">From<span>*</span></label><br>
                         <select id="sourceLocation" name="sourceLocation" required>
                             <option value="" disabled selected>Select a location</option>
-                            <option value="new_york">New York</option>
-                            <option value="los_angeles">Los Angeles</option>
-                            <option value="chicago">Chicago</option>
-                            <option value="houston">Houston</option>
-                            <option value="miami">Miami</option>
                         </select>
                     </div>
-
                     <div class="location-field">
                         <label for="destinationLocation">To<span>*</span></label><br>
                         <select id="destinationLocation" name="destinationLocation" required>
                             <option value="" disabled selected>Select a location</option>
-                            <option value="new_york">New York</option>
-                            <option value="los_angeles">Los Angeles</option>
-                            <option value="chicago">Chicago</option>
-                            <option value="houston">Houston</option>
-                            <option value="miami">Miami</option>
                         </select>
                     </div>
                 </div>
+                <script>
+                    // Function to populate a select element with locations from JSON data
+                    function populateSelect(selectElement, locations) {
+                        locations.forEach(location => {
+                            const option = document.createElement('option');
+                            option.value = location.value;
+                            option.textContent = location.text;
+                            selectElement.appendChild(option);
+                        });
+                    }
+                
+                    // Fetch locations and populate both "From" and "To" dropdowns
+                    fetch('locations.json')
+                        .then(response => response.json())
+                        .then(locations => {
+                            const sourceSelect = document.getElementById('sourceLocation');
+                            const destinationSelect = document.getElementById('destinationLocation');
+                            populateSelect(sourceSelect, locations);
+                            populateSelect(destinationSelect, locations);
+                        })
+                        .catch(error => console.error('Error loading locations:', error));
+                </script>
 
                 <div class="container">
                     <!-- Box image on the left -->
@@ -97,20 +99,21 @@
                 <div>
                     <button type="button">VOLUME WEIGHT CALCULATOR</button>
                 </div>
-                <div>
-                    <label>Booking Date<span>*</span></label><br>
-                    <!-- <input type="text" id="bookingDate" name="bookingDate" placeholder="DD-MM-YYYY"> -->
-                    <input type="date" id="bookingDate" name="bookingDate" min="2023-02-24">
-                </div>
+                <div class="location-container2">
+                    <div>
+                        <label>Booking Date<span>*</span></label><br>
+                        <input type="date" id="bookingDate" name="bookingDate" min="2023-02-24">
+                    </div>
 
-                <div>
-                    <label>Booking Type<span>*</span></label><br>
-                    <input type="text" id="bookingTime" name="bookingTime" placeholder="--:-- AM/PM">
-                    <!-- <select id="bookingTime" name="bookingTime" required>
-                        <option value="" disabled selected>Select</option>
-                        <option value="los_angeles">Normal</option>
-                        <option value="new_york">Express</option>
-                        <option value="los_angeles">Refrigerated</option> -->
+                    <div class="location-field2">
+                        <label>Booking Type<span>*</span></label><br>
+                        <select id="bookingTime" name="bookingTime" required>
+                            <option value="" disabled selected>Select</option>
+                            <option value="los_angeles">Normal</option>
+                            <option value="new_york">Express</option>
+                            <option value="los_angeles">Refrigerated</option>
+                        </select>
+                    </div>
                 </div>
             </div>
             <div>
@@ -125,6 +128,51 @@
             </div>
         </div>
     </div>
+    <footer>
+        <div class="foot-panel2">
+            <ul>
+                <p>Our Main Branches</p>
+                <a>New delhi</a>
+                <a>Mumbai</a>
+                <a>Bengaluru</a>
+                <a>Hyderabad</a>
+                <a>Chennai</a>
+                <a>Ahmedabad</a>
+
+            </ul>
+            <ul>
+                <p>Services available</p>
+                <a>Pune</a>
+                <a>Mysuru</a>
+                <a>Surat</a>
+                <a>Jaipur</a>
+                <a>Lucknow</a>
+                <a>Vishakapatanam</a>
+
+            </ul>
+            <ul>
+                <br>
+                <br>
+                <a>Bhopal</a>
+                <a>Rajkot</a>
+                <a>Noida</a>
+                <a>Madurai</a>
+                <a>Kochi</a>
+                <a>Ludhiana</a>
+
+            </ul>
+            <ul>
+                <p>Soon Available at</p>
+                <a>Kanpur</a>
+                <a>Hubbali</a>
+                <a>Kolkata</a>
+                <a>Guwahati</a>
+                <a>Indore</a>
+                <a>Raipur</a>
+
+            </ul>
+        </div>
+    </footer>
     <footer class="page-footer">
         <p>&copy; 2024 ShipEase. All rights reserved.</p>
     </footer>

@@ -13,31 +13,32 @@ body {
     margin: 0 auto;
 }
 
+
 .page-header {
     background-color: #00e5ff;
     color: #ffffff;
-    padding: 56px 0;
     text-align: center;
+    padding: 22px;
+    position: relative;
 }
-.page-header .img{
-    width: 168.5px;
-    height: auto;
-    position:absolute;
-    top: 0;
-    left : 0;
-    z-index: 0;
 
-    border: 2px solid #00e5ff;
+.page-header img {
+    width: 80px;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 10px;
 }
 
 .page-header h1 {
-    font-size: 40px;
     margin: 0;
+    font-size: 24px;
 }
 
 .info{
-    background-color: #85f3ff;
-    padding: 30px 0;
+    background-color: white;
+    /* background-color: #85f3ff; */
+    padding: 3px 0;
     text-align: center;
 }
 
@@ -153,7 +154,7 @@ body {
 }
 .headlogo{
                    
-        background-color: #85f3ff; 
+        background-color: white; 
         height: auto;
         width: auto; 
 }
@@ -226,19 +227,15 @@ margin-top: 10px;
 color:white;
 }
 
-.foot-panel4{
-    background-color:#0f1111;
-    color:white;
-    height:80px;
-    font-size: 0.7rem;
-    text-align: center;
-    /* display: flex;
-    justify-content: center;
-    align-items:center; */
-}
-.pages{
-   padding-top:25px;
-}
 .copyright{
     padding-top:5px;
+}
+
+.page-footer {
+    background-color: #00e5ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+    font-size: 17px;
 }

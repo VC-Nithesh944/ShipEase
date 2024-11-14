@@ -132,14 +132,32 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/*  */
 .location-container {
     display: flex;
     gap: 20px; /* Adds space between the From and To fields */
 }
-
 .location-field {
     flex: 1; /* Allows each field to take up equal space */
 }
+.location-container2 {
+    display: flex;
+    gap: 157px; 
+    padding-bottom: 30px;/* Adds space between the From and To fields */
+}
+.location-field2 {
+    flex: 1; /* Allows each field to take up equal space */
+}
+#bookingDate {
+    width: 150px; /* Adjust as needed */
+}
+
+/* Placeholder styling */
+#bookingDate::placeholder {
+    color: #ccc;
+}
+/*  */
 select{
     width: 100%;
     padding: 5px; /* Optional: to match input fields styling */
@@ -178,6 +196,24 @@ select{
 .slide:nth-child(3) { animation-delay: 9s; }
 /*  */
 
+/*  */
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 255px;
+    display: flex;
+    justify-content: space-evenly;
+}
+ul{
+    margin-top: 20px;
+}
+
+ul a{
+display: block;
+font-size: 0.85rem;
+margin-top: 10px;
+color:white;
+}
 .page-footer {
     background-color: #00e5ff;
     color: #ffffff;
@@ -186,6 +222,7 @@ select{
     position: relative;
     font-size: 17px;
 }
+/*  */
 
 .container {
     display: flex;
