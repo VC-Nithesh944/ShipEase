@@ -12,13 +12,41 @@ body {
     background-color: #f5f7fa;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-    background-image: url("/HTML Folder/Pictures/home.jpg");
+    /* min-height: 100vh;
+    background-image: url("/HTML Folder/Pictures/home.jpg"); */
     background-size: cover;
     
 }
 
+.bgimage{
+    width: 100vw;
+    height: 60vh;
+    margin-top: 68px;
+    background-image: url(Pictures/home.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    display: flex;
+    justify-content: left;
+    align-items: left;
+}
 
+.overlay{
+    background-color: rgb(255, 248, 220, 0.8);
+    margin: 100px;
+    padding: 40px;
+    display: block;
+    border-radius: 10px;
+    
+}
+
+.overlay h1{
+    font-size: 60px;
+    color: black;
+    text-align: left;
+}
 
 .logo img {
     scale: 210%;
@@ -88,7 +116,7 @@ nav.navbar2 ul {
 .wrapper {
     position: relative;
     width: 1000px;
-    margin: 60px 30px 0 30px;
+    margin: 120px 30px 0 30px;
     padding: 0px 20px 0 20px;
     height: 500px;
     background: #ffffff;
