@@ -1,0 +1,111 @@
+[
+    {
+        "value": "del",
+        "text": "New Delhi",
+        "latitude": 28.6139,
+        "longitude": 77.2090
+    },
+    {
+        "value": "bom",
+        "text": "Mumbai",
+        "latitude": 19.0760,
+        "longitude": 72.8777
+    },
+    {
+        "value": "blr",
+        "text": "Bengaluru",
+        "latitude": 12.9716,
+        "longitude": 77.5946
+    },
+    {
+        "value": "hyd",
+        "text": "Hyderabad",
+        "latitude": 17.3850,
+        "longitude": 78.4867
+    },
+    {
+        "value": "chn",
+        "text": "Chennai",
+        "latitude": 13.0827,
+        "longitude": 80.2707
+    },
+    {
+        "value": "amd",
+        "text": "Ahmedabad",
+        "latitude": 23.0225,
+        "longitude": 72.5714
+    },
+    {
+        "value": "pune",
+        "text": "Pune",
+        "latitude": 18.5204,
+        "longitude": 73.8567
+    },
+    {
+        "value": "mys",
+        "text": "Mysuru",
+        "latitude": 12.2958,
+        "longitude": 76.6394
+    },
+    {
+        "value": "sur",
+        "text": "Surat",
+        "latitude": 21.1702,
+        "longitude": 72.8311
+    },
+    {
+        "value": "jpr",
+        "text": "Jaipur",
+        "latitude": 26.9124,
+        "longitude": 75.7873
+    },
+    {
+        "value": "lko",
+        "text": "Lucknow",
+        "latitude": 26.8467,
+        "longitude": 80.9462
+    },
+    {
+        "value": "viz",
+        "text": "Vishakapatanam",
+        "latitude": 17.6868,
+        "longitude": 83.2185
+    },
+    {
+        "value": "bhp",
+        "text": "Bhopal",
+        "latitude": 23.2599,
+        "longitude": 77.4126
+    },
+    {
+        "value": "raj",
+        "text": "Rajkot",
+        "latitude": 22.3039,
+        "longitude": 70.8022
+    },
+    {
+        "value": "noida",
+        "text": "Noida",
+        "latitude": 28.5355,
+        "longitude": 77.3910
+    },
+    {
+        "value": "mad",
+        "text": "Madurai",
+        "latitude": 9.9252,
+        "longitude": 78.1198
+    },
+    {
+        "value": "kochi",
+        "text": "Kochi",
+        "latitude": 9.9312,
+        "longitude": 76.2673
+    },
+    {
+        "value": "ldh",
+        "text": "Ludhiana",
+        "latitude": 30.9010,
+        "longitude": 75.8573
+    }
+]
+

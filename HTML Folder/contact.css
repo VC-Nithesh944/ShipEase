@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+/* General Page Styles */
+body {
+    font-family : 'Poppins';
+    margin: 0;
+    padding: 0;
+    background-color: #cdfaff;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+
+.page-header {
+    background-color: #00e5ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 22px;
+    position: relative;
+}
+
+.page-header img {
+    width: 80px;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.info{
+    background-color: white;
+    /* background-color: #85f3ff; */
+    padding: 3px 0;
+    text-align: center;
+}
+
+.info_p1{
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    display:flex;
+}
+.info_p{
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-align: center;
+    display:flex;
+}
+
+.contact-form {
+    flex: 1;
+    padding: 20px 40px 30px 40px;
+}
+
+.contact-form{
+    position: relative;
+    width: 1000px;
+    margin: 60px 30px 0 30px;
+    padding: 0px 20px 0 20px;
+    height: 500px;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
+    display: flex;
+    overflow: hidden;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 20px;
+   
+}
+
+.input-box input {
+    width: 100%;
+    display : flex;
+    padding: 10px 15px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.input-box input:focus {
+    border-color: #00bcd4;
+}
+
+.input-box label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: #ffffff;
+    padding: 0 5px;
+    color: #666;
+    font-size: 14px;
+}
+
+.input-box .rm{
+    display : flex;
+    width : 275px;
+    background-color: black;
+    scale : 1.2;
+}
+
+
+
+.btn {
+    width: 100%;
+    padding: 12px 0;
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0097a7;
+}
+
+
+.image-slider {
+    width: 50%;
+    position: relative;
+}
+
+.image-slider img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    transition: left 0.6s ease-in-out;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.image-slider img.active {
+    left: 0;
+}
+
+.media-container{
+        padding: 50px 0;
+        text-align: center;
+}
+.headlogo{
+                   
+        background-color: white; 
+        height: auto;
+        width: auto; 
+}
+
+.media-container{
+        display:flex;                /* Use flex layout */
+        justify-content:space-evenly; /* Space logos evenly */
+        align-items:center;          /* Center logos vertically */
+        flex-wrap:wrap;              /* Wrap to next line on small screens */
+        gap: 20px;                    /* Space between logos */
+        padding: 20px;                /* Optional padding around container */
+}
+
+.insta{
+          /* Smooth transition on hover *//* Center icon within the container */
+        display: inline-block;
+        color: black;
+        font-size: 80px;
+          height: auto;
+          width: auto; 
+}
+.facebook{
+    display: inline-block;
+    font-size: 80px;
+      height: auto;
+      width: auto; 
+}
+.twitter{
+    display: inline-block;
+    font-size: 80px;
+      height: auto;
+      width: auto;
+}
+
+a{
+    color: black;
+}
+
+.footer{
+    margin-top: 15px;
+    
+}
+.foot-panel{
+    background-color: #37475a;
+    color: white;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.5rem;
+
+}
+
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 300px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+ul{
+    margin-top: 20px;
+}
+
+ul a{
+display: block;
+font-size: 0.85rem;
+margin-top: 10px;
+color:white;
+}
+
+.copyright{
+    padding-top:5px;
+}
+
+.page-footer {
+    background-color: #00e5ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+    font-size: 17px;
+}

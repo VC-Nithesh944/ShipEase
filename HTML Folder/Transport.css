@@ -1,0 +1,330 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: cornsilk;
+    margin: 0;
+    padding: 0;
+}
+
+/*  */
+.page-header {
+    background-color: #00e5ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 22px;
+    position: relative;
+}
+
+.page-header img {
+    width: 71px;
+    height: auto;
+    position: absolute;
+    top: 0px;
+    left: 10px;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+/*  */
+
+/*  */
+.background-div {
+    width: 100vw;
+    height: 73vh;
+    background-image: url('Pictures/road.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+/* Translucent overlay for text */
+.overlay {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white */
+    padding: 17px 13px;
+    max-width: 577px;
+    text-align: center;
+    border-radius: 8px;
+    margin-left: 30px;
+}
+
+.overlay h1 {
+    font-size: 2em;
+    color: #333;
+    margin: 0;
+}
+
+.overlay p {
+    font-size: 1em;
+    color: #333;
+    text-align: left;
+}
+/*  */
+
+.box{
+        position: relative;
+        width: 1137px;
+        margin: 0 auto; 
+        margin-top: 70px;
+        margin-bottom: 70px;
+        padding: 0px 0px;
+        height: 737px;
+        background: #ffffff;
+        border-radius: 20px;
+        /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15); */
+        display: flex;
+        overflow: hidden;
+}
+
+.grey-box {
+    flex: 1; /* Takes up the remaining 50% */
+    padding: 3px 39px 3px 18px;
+    background: #f7f7f7;
+    border-radius: 8px;
+    box-sizing: border-box;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: space-between; */
+}
+
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+}
+
+input[type="text"] { 
+    width: 100%;
+    padding: 5px;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+button {
+    background-color: #00e5ff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 10px 5px 0 0;
+}
+
+button:hover {
+    background-color: #00c8e0;
+}
+
+/* Link styling */
+a {
+    color: #00e5ff;
+    text-decoration: none;
+    font-size: 11px;
+    display: inline-block;
+    /* margin-top: 10px; */
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/*  */
+.location-container {
+    display: flex;
+    gap: 20px; /* Adds space between the From and To fields */
+}
+.location-field {
+    flex: 1; /* Allows each field to take up equal space */
+}
+.location-container2 {
+    display: flex;
+    gap: 157px; 
+    padding-bottom: 30px;/* Adds space between the From and To fields */
+}
+.location-field2 {
+    flex: 1; /* Allows each field to take up equal space */
+}
+#bookingDate {
+    width: 150px; /* Adjust as needed */
+}
+
+/* Placeholder styling */
+#bookingDate::placeholder {
+    color: #ccc;
+}
+/*  */
+select{
+    width: 100%;
+    padding: 5px; /* Optional: to match input fields styling */
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box; /* Ensures padding doesn't affect width */
+}
+
+
+/*  */
+.slideshow {
+    flex: 1; /* Takes up 50% of the space */
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#map {
+    height: 100%; /* Make it take full height of the slideshow container */
+    width: 100%; /* Make it fill the parent container */
+    border: 1px solid #ddd; /* Optional: add a border */
+}
+
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    display: none; /* Hide initially */
+}
+
+.result-box h3 {
+    font-size: 1.2em;
+}
+
+.result-box p {
+    font-size: 1em;
+    color: #333;
+}
+/*  */
+
+/*  */
+.info-section {
+    background-color: #00e5ff; /* Light background for contrast */
+    padding: 40px 20px;
+}
+
+.info-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-box {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.info-box h2 {
+    background-color: #00e5ff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2em;
+    margin: -20px -20px 20px -20px;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-box ul li {
+    font-size: 0.95em;
+    color: #333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.info-box ul li::before {
+    content: "⚡";
+    color: #00e5ff;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*  */
+
+/*  */
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 255px;
+    display: flex;
+    justify-content: space-evenly;
+}
+ul{
+    margin-top: 20px;
+}
+
+ul a{
+display: block;
+font-size: 0.85rem;
+margin-top: 10px;
+color:white;
+}
+.page-footer {
+    background-color: #00e5ff;
+    color: #ffffff;
+    text-align: center;
+    padding: 1px;
+    position: relative;
+    font-size: 17px;
+}
+/*  */
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    gap: 77px;
+    padding: 20px;
+    margin-top: 51px;
+}
+
+/* Image container */
+.box-image {
+    width: 200px;
+    height: auto;
+}
+
+/* Input fields container */
+.input-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* Individual input field style */
+.input-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+}
+
+/* Styling for input boxes */
+input {
+    width: 60px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
