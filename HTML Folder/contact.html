@@ -62,6 +62,78 @@
 
     </div>
 
+    <!-- 
+    FAQs -->
+    <div class="faq-container">
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq-item">
+            <div class="faq-question">How do I track my shipment?</div>
+            <div class="faq-answer">
+                You can track your shipment by using the tracking number provided at the time of shipment. Simply visit our "Track & Trace" page and enter your tracking number to get real-time updates on your shipment’s status.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"> What are the shipping rates?</div>
+            <div class="faq-answer">
+                Shipping rates vary based on factors like destination, package size, weight, and delivery speed. You can get an instant quote by entering your shipment details (weight, dimensions, origin, and destination) on our pricing page or by contacting our customer service.
+
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">How long will my shipment take to arrive?</div>
+            <div class="faq-answer">
+                Delivery times depend on the shipping method chosen and the distance between the origin and destination. Domestic deliveries typically take 2-7 business days, while international shipments may take 5-14 business days, depending on the service selected.
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"> Do you offer international shipping?</div>
+            <div class="faq-answer">
+                Yes, we offer international shipping to over 200 countries worldwide. Shipping times and rates vary based on the destination country and the selected service level
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"> How do I prepare my shipment for delivery?</div>
+            <div class="faq-answer">
+                Ensure that your items are securely packed in a box or container that is appropriate for the size and weight of the shipment. Label your package with the correct shipping information, including the destination address and any necessary customs documentation for international shipments
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Can I change the delivery address after the shipment has been dispatched?</div>
+            <div class="faq-answer">
+                Once a shipment is in transit, it may not be possible to change the delivery address. However, you can contact our customer support team immediately, and we will try to assist you with rerouting or intercepting the package, depending on the circumstance
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question"> How do I request a pickup for my shipment?</div>
+            <div class="faq-answer">
+                You can request a pickup by logging into your account on our website or by calling our customer service team. Provide the necessary details such as your pickup address, shipment type, and preferred time.
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        // JavaScript to toggle visibility of answers
+        const questions = document.querySelectorAll('.faq-question');
+
+        questions.forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                if (answer.style.display === 'block') {
+                    answer.style.display = 'none';
+                } else {
+                    answer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+
 
     <div class="info_p1">
         <h4>Need assistance? We're happy to help, reach us out through the appropriate channels below.</h4>
