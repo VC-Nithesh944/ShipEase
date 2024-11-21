@@ -132,14 +132,32 @@ a {
 a:hover {
     text-decoration: underline;
 }
+
+/*  */
 .location-container {
     display: flex;
     gap: 20px; /* Adds space between the From and To fields */
 }
-
 .location-field {
     flex: 1; /* Allows each field to take up equal space */
 }
+.location-container2 {
+    display: flex;
+    gap: 157px; 
+    padding-bottom: 30px;/* Adds space between the From and To fields */
+}
+.location-field2 {
+    flex: 1; /* Allows each field to take up equal space */
+}
+#bookingDate {
+    width: 150px; /* Adjust as needed */
+}
+
+/* Placeholder styling */
+#bookingDate::placeholder {
+    color: #ccc;
+}
+/*  */
 select{
     width: 100%;
     padding: 5px; /* Optional: to match input fields styling */
@@ -161,23 +179,107 @@ select{
     overflow: hidden;
 }
 
-.slide {
-    width: 100%; /* Ensures images take up the full width */
-    height: 100%; /* Ensures images fill the height of slideshow */
-    object-fit: cover;
-    animation: fade 15s infinite;
+#map {
+    height: 100%; /* Make it take full height of the slideshow container */
+    width: 100%; /* Make it fill the parent container */
+    border: 1px solid #ddd; /* Optional: add a border */
 }
 
-@keyframes fade {
-    0%, 33% { opacity: 1; }
-    34%, 100% { opacity: 0; }
+
+.result-box {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border: 1px solid #ccc;
+    display: none; /* Hide initially */
 }
 
-.slide:nth-child(1) { animation-delay: 0s; }
-.slide:nth-child(2) { animation-delay: 3s; }
-.slide:nth-child(3) { animation-delay: 9s; }
+.result-box h3 {
+    font-size: 1.2em;
+}
+
+.result-box p {
+    font-size: 1em;
+    color: #333;
+}
 /*  */
 
+/*  */
+.info-section {
+    background-color: #00e5ff; /* Light background for contrast */
+    padding: 40px 20px;
+}
+
+.info-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.info-box {
+    flex: 1;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 10px;
+    min-width: 300px;
+}
+
+.info-box h2 {
+    background-color: #00e5ff;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    border-radius: 8px 8px 0 0;
+    font-size: 1.2em;
+    margin: -20px -20px 20px -20px;
+}
+
+.info-box ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.info-box ul li {
+    font-size: 0.95em;
+    color: #333;
+    margin: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.info-box ul li::before {
+    content: "⚡";
+    color: #00e5ff;
+    font-size: 1.2em;
+    margin-right: 10px;
+}
+
+/*  */
+
+/*  */
+.foot-panel2{
+    background-color: #222f3d;
+    color: white;
+    height: 255px;
+    display: flex;
+    justify-content: space-evenly;
+}
+ul{
+    margin-top: 20px;
+}
+
+ul a{
+display: block;
+font-size: 0.85rem;
+margin-top: 10px;
+color:white;
+}
 .page-footer {
     background-color: #00e5ff;
     color: #ffffff;
@@ -186,6 +288,7 @@ select{
     position: relative;
     font-size: 17px;
 }
+/*  */
 
 .container {
     display: flex;

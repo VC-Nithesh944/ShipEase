@@ -1,0 +1,6 @@
+{
+    "branches": ["New Delhi", "Mumbai", "Bengaluru", "Hyderabad", "Chennai", "Ahmedabad"],
+    "services": ["Pune", "Mysuru", "Surat", "Jaipur", "Lucknow", "Vishakapatanam"],
+    "otherCities": ["Bhopal", "Rajkot", "Noida", "Madurai", "Kochi", "Ludhiana"],
+    "soonAvailable": ["Kanpur", "Hubbali", "Kolkata", "Guwahati", "Indore", "Raipur"]
+}
