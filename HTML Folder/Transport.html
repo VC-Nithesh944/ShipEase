@@ -7,10 +7,10 @@
     <title>Transport</title>
     <link rel="stylesheet" href="Transport.css">
 
-        <!-- Include Leaflet.js CSS and JS -->
-        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-        <!-- Your existing links and styles -->
+    <!-- Include Leaflet.js CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Your existing links and styles -->
 </head>
 
 <body>
@@ -33,12 +33,12 @@
             <script>
                 // Initialize the map
                 var map = L.map('map').setView([20.5937, 78.9629], 5); // Default view to center the map on India
-    
+
                 // Add a tile layer
                 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                     attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 }).addTo(map);
-    
+
                 // Function to add pins to the map from the JSON data
                 function addPinsToMap(data) {
                     data.forEach(city => {
@@ -48,7 +48,7 @@
                             .openPopup();
                     });
                 }
-    
+
                 // Fetch and load the cities data from the JSON file
                 fetch('roadDest.json')
                     .then(response => {
@@ -63,7 +63,7 @@
                     .catch(error => console.error('Error fetching the JSON file:', error));
             </script>
         </div>
-    
+
         <!-- Right-side Grey Box -->
         <div class="grey-box">
             <div class="row">
@@ -120,7 +120,7 @@
                     <div class="box-image">
                         <img src="Pictures/box.avif" alt="Box" style="width: 100%;">
                     </div>
-    
+
                     <!-- Input Fields -->
                     <div class="input-fields">
                         <div class="input-group">
@@ -189,19 +189,25 @@
                 <button type="button" onclick="validateForm()">FIND</button>
                 <button type="reset" onclick="resetValues()">RESET</button>
             </div>
+            <!-- <label for="estimated-price">Estimated Price:</label> -->
+            <input type="text" id="estimated-price" placeholder="Estimated Price" readonly />
+            <br>
+            <button type="button" onclick="validateForm()">CONFIRM</button>
         </div>
     </div>
-    
+
     <section class="info-section">
         <div class="info-container">
             <!-- Column 1 -->
             <div class="info-box">
                 <h2>BENEFITS OF CHOOSING RHENUS FOR YOUR ROAD FREIGHT</h2>
                 <ul>
-                    <li>🌟 International network in Europe, Asia-Pacific, Americas, and Africa with branches in all important industrial centers</li>
+                    <li>🌟 International network in Europe, Asia-Pacific, Americas, and Africa with branches in all
+                        important industrial centers</li>
                     <li>🌟 Forwarding of most goods — whether dangerous, temperature-controlled, or oversized cargo</li>
                     <li>🌟 National and international coverage with door-to-door services for your shipment</li>
-                    <li>🌟 Scheduled services for import and export shipments with direct departures and reliable lead times</li>
+                    <li>🌟 Scheduled services for import and export shipments with direct departures and reliable lead
+                        times</li>
                 </ul>
             </div>
             <!-- Column 2 -->
@@ -210,7 +216,8 @@
                 <ul>
                     <li>🌟 Reliability, security, and punctual delivery are at the heart of our quality standards</li>
                     <li>🌟 Complete overview and control of your shipments with our online track & trace tool</li>
-                    <li>🌟 Visibility from collection to delivery, digital online booking, and paperless IT solutions</li>
+                    <li>🌟 Visibility from collection to delivery, digital online booking, and paperless IT solutions
+                    </li>
                     <li>🌟 Certifications for the highest quality and security standards</li>
                     <li>🌟 Experienced and dedicated experts</li>
                 </ul>
@@ -227,52 +234,52 @@
             </div>
         </div>
     </section>
-    
+
     <footer>
         <div class="foot-panel2" id="footPanel"></div>
 
-<script>
-    // Populate footer dynamically
-    function populateFooter(jsonFile, containerId) {
-        fetch(jsonFile)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                const container = document.getElementById(containerId);
+        <script>
+            // Populate footer dynamically
+            function populateFooter(jsonFile, containerId) {
+                fetch(jsonFile)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        const container = document.getElementById(containerId);
 
-                // Function to create a section
-                function createSection(title, items) {
-                    const ul = document.createElement('ul');
-                    const titleElement = document.createElement('p');
-                    titleElement.textContent = title;
-                    ul.appendChild(titleElement);
+                        // Function to create a section
+                        function createSection(title, items) {
+                            const ul = document.createElement('ul');
+                            const titleElement = document.createElement('p');
+                            titleElement.textContent = title;
+                            ul.appendChild(titleElement);
 
-                    items.forEach(item => {
-                        const anchor = document.createElement('a');
-                        anchor.textContent = item;
-                        anchor.href = "#"; // Optional: Add appropriate links
-                        ul.appendChild(anchor);
-                    });
+                            items.forEach(item => {
+                                const anchor = document.createElement('a');
+                                anchor.textContent = item;
+                                anchor.href = "#"; // Optional: Add appropriate links
+                                ul.appendChild(anchor);
+                            });
 
-                    return ul;
-                }
+                            return ul;
+                        }
 
-                // Add sections dynamically
-                container.appendChild(createSection("Our Main Branches", data.branches));
-                container.appendChild(createSection("Services Available", data.services));
-                container.appendChild(createSection("", data.otherCities)); // Blank title
-                container.appendChild(createSection("Soon Available at", data.soonAvailable));
-            })
-            .catch(error => console.error('Error fetching the JSON file:', error));
-    }
+                        // Add sections dynamically
+                        container.appendChild(createSection("Our Main Branches", data.branches));
+                        container.appendChild(createSection("Services Available", data.services));
+                        container.appendChild(createSection("", data.otherCities)); // Blank title
+                        container.appendChild(createSection("Soon Available at", data.soonAvailable));
+                    })
+                    .catch(error => console.error('Error fetching the JSON file:', error));
+            }
 
-    // Call the function
-    populateFooter('transFooter.json', 'footPanel');
-</script>
+            // Call the function
+            populateFooter('transFooter.json', 'footPanel');
+        </script>
 
     </footer>
     <footer class="page-footer">
