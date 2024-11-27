@@ -32,7 +32,7 @@ body {
 .background-div {
     width: 100vw;
     height: 73vh;
-    background-image: url('Pictures/road.jpg'); /* Replace with your image path */
+    background-image: url('../Pictures/road.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

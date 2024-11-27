@@ -28,17 +28,13 @@
       "Chennai": 18,
       "Ahmedabad": 13,
       "Pune": 12,
-      "Mysuru": 14,
-      "Surat": 12,
       "Jaipur": 15,
       "Lucknow": 14,
       "Visakhapatnam": 17,
       "Bhopal": 13,
       "Rajkot": 13,
-      "Noida": 16,
       "Madurai": 18,
-      "Kochi": 17,
-      "Ludhiana": 19
+      "Kochi": 17
     },
     "Refrigerated": {
       "New Delhi": 25,
@@ -47,18 +43,7 @@
       "Hyderabad": 24,
       "Chennai": 26,
       "Ahmedabad": 22,
-      "Pune": 21,
-      "Mysuru": 23,
-      "Surat": 21,
-      "Jaipur": 25,
-      "Lucknow": 23,
-      "Visakhapatnam": 28,
-      "Bhopal": 22,
-      "Rajkot": 22,
-      "Noida": 25,
-      "Madurai": 26,
-      "Kochi": 28,
-      "Ludhiana": 30
+      "Pune": 21
     },
     "Hazardous": {
       "New Delhi": 30,
@@ -68,17 +53,8 @@
       "Chennai": 36,
       "Ahmedabad": 31,
       "Pune": 30,
-      "Mysuru": 32,
-      "Surat": 30,
       "Jaipur": 34,
-      "Lucknow": 32,
-      "Visakhapatnam": 36,
-      "Bhopal": 31,
-      "Rajkot": 31,
-      "Noida": 33,
-      "Madurai": 36,
-      "Kochi": 35,
-      "Ludhiana": 40
+      "Lucknow": 32
     }
   }
 }
