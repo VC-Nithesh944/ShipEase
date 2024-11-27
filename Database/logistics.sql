@@ -6,8 +6,6 @@ create Table Users(
     Username varchar(255) NOT NULL,
     Email varchar(255) unique,
     Password varchar(255),
-    Role enum('Admin', 'Client') Not null,
-    Created_at timestamp default Current_timestamp
 	);
 
 create Table Orders(

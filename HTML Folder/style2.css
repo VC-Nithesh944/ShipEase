@@ -18,35 +18,42 @@ body {
     
 }
 
-.bgimage{
-    width: 100vw;
-    height: 60vh;
-    margin-top: 68px;
+.bgimage {
+    width: 100%; /* Ensure it spans the full width of the viewport */
+    height: 60vh; /* Maintain proportional height */
+    margin-top: 68px; /* Matches the navbar height */
     background-image: url(Pictures/home.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center; /* Centers the background */
     background-repeat: no-repeat;
     border-bottom-left-radius: 50px;
     border-bottom-right-radius: 50px;
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: left; /* Center the overlay horizontally */
+    align-items: center; /* Center the overlay vertically */
+    position: relative; /* Ensure proper stacking with other elements */
+    z-index: 0; /* Prevent overlapping of other elements */
 }
 
-.overlay{
-    background-color: rgb(255, 248, 220, 0.8);
-    margin: 100px;
+.overlay {
+    background-color: rgba(255, 248, 220, 0.8);
+    margin-left : 40px; /* Fix opacity */
     padding: 40px;
-    display: block;
+    display: flex;
+    flex-direction: column; /* Allows alignment adjustments */
+    align-items: flex-start; /* Align content to the left */
+    justify-content: center; /* Center content vertically */
     border-radius: 10px;
-    
-}
-
-.overlay h1{
-    font-size: 60px;
-    color: black;
+    max-width: 90%; 
     text-align: left;
 }
+
+.overlay h1 {
+    font-size: 60px;
+    color: black;
+    line-height: 1.2; /* Improves readability */
+}
+
 
 .logo img {
     scale: 210%;
@@ -233,3 +240,4 @@ h2, .sign {
     color: #0097a7;
     text-decoration: underline;
 }
+
