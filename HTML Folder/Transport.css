@@ -145,6 +145,7 @@ a:hover {
     display: flex;
     gap: 157px; 
     padding-bottom: 30px;/* Adds space between the From and To fields */
+    margin-top: 17px;
 }
 .location-field2 {
     flex: 1; /* Allows each field to take up equal space */
@@ -184,24 +185,6 @@ select{
     width: 100%; /* Make it fill the parent container */
     border: 1px solid #ddd; /* Optional: add a border */
 }
-
-
-.result-box {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f4f4f4;
-    border: 1px solid #ccc;
-    display: none; /* Hide initially */
-}
-
-.result-box h3 {
-    font-size: 1.2em;
-}
-
-.result-box p {
-    font-size: 1em;
-    color: #333;
-}
 /*  */
 
 /*  */
@@ -230,7 +213,7 @@ select{
 }
 
 .info-box h2 {
-    background-color: #00e5ff;
+    background-color: #222f3d;
     color: white;
     padding: 10px;
     text-align: center;
@@ -296,7 +279,7 @@ color:white;
     justify-content: left;
     gap: 77px;
     padding: 20px;
-    margin-top: 51px;
+    margin-top: 17px;
 }
 
 /* Image container */

@@ -171,10 +171,11 @@ body {
 .insta{
           /* Smooth transition on hover *//* Center icon within the container */
         display: inline-block;
-        color: black;
+        color:black;
         font-size: 80px;
           height: auto;
           width: auto; 
+          
 }
 .facebook{
     display: inline-block;
@@ -189,6 +190,89 @@ body {
       width: auto;
 }
 
+ /* /* faq */
+
+.faq-container {
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #ffffff;/* White background for clean look   */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth  */
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.faq-container h1{
+    margin-right: 100%;
+   white-space: nowrap;
+    
+}
+
+/* FAQ Header */
+ .faq-container h1 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* FAQ Question */
+.faq-question {
+    font-weight: 600;
+    cursor: pointer;
+    padding: 15px;
+    margin: 10px 0;
+    background-color: #f7f7f7; /* Slightly gray background */
+    border-radius: 8px;
+    border: 1px solid #ddd; /* Soft border for separation */
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover effect for FAQ Question */
+.faq-question:hover {
+    background-color: #007bff; /* Blue background on hover */
+    color: #fff; /* White text on hover */
+}
+
+/* FAQ Answer */
+.faq-answer {
+    display: none;
+    margin: 10px 0;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-left: 5px solid black; /* Add accent color on the left */
+    border-radius: 8px;
+    color: #555;
+    font-size: 16px;
+}  */
+
+/* Mobile responsiveness: Stacking FAQ items on smaller screens */
+/* @media (max-width: 600px) {
+    .faq-container {
+        padding: 15px;
+    }
+
+    .faq-question {
+        padding: 12px;
+    }
+
+    .faq-answer {
+        padding: 12px;
+    }
+} */
+
+/* Button or link for social media: Just an example */
+ .faq-container a {
+    font-size: 24px;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.faq-container a:hover {
+    color: #0056b3;
+} 
 a{
     color: black;
 }
@@ -233,9 +317,9 @@ color:white;
 
 .page-footer {
     background-color: #00e5ff;
-    color: #ffffff;
+    color:black;
     text-align: center;
     padding: 1px;
     position: relative;
     font-size: 17px;
-}
+} 
