@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transport</title>
+    <link rel="stylesheet" href="Transport.css">
+
+    <!-- Include Leaflet.js CSS and JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <!-- Your existing links and styles -->
+</head>
+
+<body>
+    <script src="./transport.js">  </script>
+    <header class="page-header">
+        <img class="img" src="../Pictures/logo.png" alt="ShipEase Logo">
+        <h1>ROAD TRANSPORT</h1>
+    </header>
+    <div class="background-div">
+        <div class="overlay">
+            <h1>ROAD FREIGHT TRANSPORT SOLUTIONS FOR YOU</h1>
+            <p>We handle your transports via road from point A to point B. As a global service provider, we maintain an
+                extensive network structure on various continents for road freight transports. We offer individual and
+                economic solutions based on the weight of your goods as well as the volume.</p>
+        </div>
+    </div>
+    <div class="box">
+        <!-- Map Container -->
+        <div class="slideshow">
+            <div id="map"></div>
+            <script>
+                // Initialize the map
+                var map = L.map('map').setView([20.5937, 78.9629], 5); // Default view to center the map on India
+
+                // Add a tile layer
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
+
+                // Function to add pins to the map from the JSON data
+                function addPinsToMap(data) {
+                    data.forEach(city => {
+                        L.marker([city.latitude, city.longitude])
+                            .addTo(map)
+                            .bindPopup(`<b>${city.text}</b>`)
+                            .openPopup();
+                    });
+                }
+
+                // Fetch and load the cities data from the JSON file
+                fetch('roadDest.json')
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        addPinsToMap(data); // Call function to add markers on the map
+                    })
+                    .catch(error => console.error('Error fetching the JSON file:', error));
+            </script>
+        </div>
+
+        <!-- Right-side Grey Box -->
+        <div class="grey-box">
+            <div class="row">
+                <div class="card ups-card">
+                    <h1>Create a Shipment</h1>
+                </div>
+                <div class="location-container">
+                    <div class="location-field">
+                        <label for="sourceLocation">From<span>*</span></label><br>
+                        <select id="sourceLocation" name="sourceLocation" required>
+                            <option value="" disabled selected>Select a location</option>
+                        </select>
+                    </div>
+                    <div class="location-field">
+                        <label for="destinationLocation">To<span>*</span></label><br>
+                        <select id="destinationLocation" name="destinationLocation" required>
+                            <option value="" disabled selected>Select a location</option>
+                        </select>
+                    </div>
+                </div>
+                <script>
+                    // Function to populate dropdowns
+                    // function populateDropdowns(jsonFile, dropdownIds) {
+                    //     fetch(jsonFile)
+                    //         .then(response => {
+                    //             if (!response.ok) {
+                    //                 throw new Error('Network response was not ok');
+                    //             }
+                    //             return response.json();
+                    //         })
+                    //         .then(data => {
+                    //             dropdownIds.forEach(dropdownId => {
+                    //                 const dropdown = document.getElementById(dropdownId);
+                    //                 data.forEach(item => {
+                    //                     const option = document.createElement('option');
+                    //                     option.value = item.value;
+                    //                     option.textContent = item.text;
+                    //                     dropdown.appendChild(option);
+                    //                 });
+                    //             });
+                    //         })
+                    //         .catch(error => console.error('Error fetching the JSON file:', error));
+                    // }
+                    // Call the function to populate both dropdowns
+                    populateDropdowns('roadDest.json', ['sourceLocation', 'destinationLocation']);
+                </script>
+                <!-- <script>
+                    // Populate dropdowns for locations
+                    populateDropdowns('roadDest.json', ['sourceLocation', 'destinationLocation']);
+                </script> -->
+                <div class="container">
+                    <!-- Box Image -->
+                    <div class="box-image">
+                        <img src="../Pictures/box.avif" alt="Box" style="width: 100%;">
+                    </div>
+
+                    <!-- Input Fields -->
+                    <div class="input-fields">
+                        <div class="input-group">
+                            <label for="weight">Weight*</label>
+                            <input type="number" id="weight" placeholder="kg">
+                        </div>
+                        <div class="input-group">
+                            <label for="length">Length*</label>
+                            <input type="number" id="length" placeholder="cm">
+                        </div>
+                        <div class="input-group">
+                            <label for="width">Width*</label>
+                            <input type="number" id="width" placeholder="cm">
+                        </div>
+                        <div class="input-group">
+                            <label for="height">Height*</label>
+                            <input type="number" id="height" placeholder="cm">
+                        </div>
+                    </div>
+                </div>
+                <!-- <button type="button">VOLUME WEIGHT CALCULATOR</button> -->
+                <div class="location-container2">
+                    <div>
+                        <label>Booking Date<span>*</span></label><br>
+                        <input type="date" id="bookingDate" name="bookingDate" min="2023-02-24">
+                    </div>
+                    <div class="location-field2">
+                        <label>Booking Type<span>*</span></label><br>
+                        <select id="bookingType" name="bookingType" required>
+                            <option value="" disabled selected>Select</option>
+                        </select>
+                    </div>
+                    <script>
+                        // Function to populate a dropdown with JSON data
+                        // function populateDropdown2(jsonFile, dropdownId) {
+                        //     fetch(jsonFile)
+                        //         .then(response => {
+                        //             if (!response.ok) {
+                        //                 throw new Error('Network response was not ok');
+                        //             }
+                        //             return response.json();
+                        //         })
+                        //         .then(data => {
+                        //             const dropdown = document.getElementById(dropdownId);
+                        //             data.forEach(item => {
+                        //                 const option = document.createElement('option');
+                        //                 option.value = item.value;
+                        //                 option.textContent = item.text;
+                        //                 dropdown.appendChild(option);
+                        //             });
+                        //         })
+                        //         .catch(error => console.error('Error fetching the JSON file:', error));
+                        // }
+
+                        // Populate the Booking Type dropdown
+                        populateDropdown2('bookingTypes.json', 'bookingType');
+                    </script>
+                    <!-- <script>
+                        // Populate dropdown for booking type
+                        populateDropdown('bookingTypes.json', 'bookingType');
+                    </script> -->
+                </div>
+            </div>
+            <div>
+                <span>*</span><i>Indicates required fields.</i><br><br>
+                <button type="button" onclick="calculatePrice()">FIND</button>
+                <button type="reset" onclick="resetValues()">RESET</button>
+            </div>
+            <!-- <label for="estimated-price">Estimated Price:</label> -->
+            <input type="text" id="estimated-price" placeholder="Estimated Price" readonly />
+            <br>
+            <button type="button" onclick="validateForm()">CONFIRM</button>
+        </div>
+    </div>
+
+    <section class="info-section">
+        <div class="info-container">
+            <!-- Column 1 -->
+            <div class="info-box">
+                <h2>BENEFITS OF CHOOSING RHENUS FOR YOUR ROAD FREIGHT</h2>
+                <ul>
+                    <li>🌟 International network in Europe, Asia-Pacific, Americas, and Africa with branches in all
+                        important industrial centers</li>
+                    <li>🌟 Forwarding of most goods — whether dangerous, temperature-controlled, or oversized cargo</li>
+                    <li>🌟 National and international coverage with door-to-door services for your shipment</li>
+                    <li>🌟 Scheduled services for import and export shipments with direct departures and reliable lead
+                        times</li>
+                </ul>
+            </div>
+            <!-- Column 2 -->
+            <div class="info-box">
+                <h2>OUR VISIBILITY AND QUALITY STANDARDS</h2>
+                <ul>
+                    <li>🌟 Reliability, security, and punctual delivery are at the heart of our quality standards</li>
+                    <li>🌟 Complete overview and control of your shipments with our online track & trace tool</li>
+                    <li>🌟 Visibility from collection to delivery, digital online booking, and paperless IT solutions
+                    </li>
+                    <li>🌟 Certifications for the highest quality and security standards</li>
+                    <li>🌟 Experienced and dedicated experts</li>
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="info-box">
+                <h2>WE DELIVER YOUR GOODS AT THE RIGHT TIME</h2>
+                <ul>
+                    <li>🌟 Standardized processes and products within the Rhenus network and with our partners</li>
+                    <li>🌟 Direct connection with high frequencies: Weekly and daily scheduled departures</li>
+                    <li>🌟 Fixed and reliable transit times due to route optimizations for your shipments</li>
+                    <li>🌟 Country-specific market knowledge for additional services like customs clearance</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="foot-panel2" id="footPanel"></div>
+
+        <script>
+            // Populate footer dynamically
+            // function populateFooter(jsonFile, containerId) {
+            //     fetch(jsonFile)
+            //         .then(response => {
+            //             if (!response.ok) {
+            //                 throw new Error('Network response was not ok');
+            //             }
+            //             return response.json();
+            //         })
+            //         .then(data => {
+            //             const container = document.getElementById(containerId);
+
+            //             // Function to create a section
+            //             function createSection(title, items) {
+            //                 const ul = document.createElement('ul');
+            //                 const titleElement = document.createElement('p');
+            //                 titleElement.textContent = title;
+            //                 ul.appendChild(titleElement);
+
+            //                 items.forEach(item => {
+            //                     const anchor = document.createElement('a');
+            //                     anchor.textContent = item;
+            //                     anchor.href = "#"; // Optional: Add appropriate links
+            //                     ul.appendChild(anchor);
+            //                 });
+
+            //                 return ul;
+            //             }
+
+            //             // Add sections dynamically
+            //             container.appendChild(createSection("Our Main Branches", data.branches));
+            //             container.appendChild(createSection("Services Available", data.services));
+            //             container.appendChild(createSection("", data.otherCities)); // Blank title
+            //             container.appendChild(createSection("Soon Available at", data.soonAvailable));
+            //         })
+            //         .catch(error => console.error('Error fetching the JSON file:', error));
+            // }
+
+            // Call the function
+            populateFooter('transFooter.json', 'footPanel');
+        </script>
+
+    </footer>
+    <footer class="page-footer">
+        <p>&copy; 2024 ShipEase. All rights reserved.</p>
+    </footer>
+    <script>
+
+        // function calculatePrice() {
+        //     // Get input values
+        //     const fromLocation = document.getElementById("sourceLocation").value;
+        //     const toLocation = document.getElementById("destinationLocation").value;
+        //     const bookingType = document.getElementById("bookingType").value;
+        //     const weight = parseFloat(document.getElementById("weight").value);
+        //     const length = parseFloat(document.getElementById("length").value);
+        //     const width = parseFloat(document.getElementById("width").value);
+        //     const height = parseFloat(document.getElementById("height").value);
+
+        //     // Validate inputs
+        //     if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height)) {
+        //         alert("Please fill in all required fields correctly.");
+        //         return;
+        //     }
+
+        //     // Calculate volume weight
+        //     const volumeWeight = (length * width * height) / 5000;
+        //     const chargeableWeight = Math.max(weight, volumeWeight);
+
+        //     // Fetch rates.json and calculate the price
+        //     fetch("rates.json")
+        //         .then((response) => response.json())
+        //         .then((rates) => {
+        //             // Get rates for the selected booking type and destination
+        //             const ratePerKg = rates.json[bookingType][toLocation];
+
+        //             if (!ratePerKg) {
+        //                 alert("Rates not available for the selected destination or booking type.");
+        //                 return;
+        //             }
+
+        //             // Calculate total price
+        //             const totalPrice = chargeableWeight * ratePerKg;
+
+        //             // Display the estimated price
+        //             document.getElementById("estimated-price").value = `₹${totalPrice.toFixed(2)}`;
+        //         })
+        //         .catch((error) => {
+        //             console.error("Error fetching rates.json:", error);
+        //             alert("Failed to fetch rates. Please try again.");
+        //         });
+        // }
+    </script>
+    <script>
+        // Function to reset all input fields to their default values
+        function resetValues() {
+            // Reset dropdowns
+            document.getElementById('sourceLocation').selectedIndex = 0;
+            document.getElementById('destinationLocation').selectedIndex = 0;
+            document.getElementById('bookingType').selectedIndex = 0;
+            document.getElementById('weight').value = '';
+            document.getElementById('length').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('height').value = '';
+            document.getElementById('bookingDate').value = '';
+            document.getElementById('estimated-price').value = '';
+        }
+    </script>
+
+</body>
+
+</html>
