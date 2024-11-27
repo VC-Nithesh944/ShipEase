@@ -285,10 +285,22 @@
     <footer class="page-footer">
         <p>&copy; 2024 ShipEase. All rights reserved.</p>
     </footer>
-
-</body>
-
-</html>
+    <script>
+        // Function to reset all input fields to their default values
+        function resetValues() {
+            // Reset dropdowns
+            document.getElementById('sourceLocation').selectedIndex = 0;
+            document.getElementById('destinationLocation').selectedIndex = 0;
+            document.getElementById('bookingType').selectedIndex = 0;
+            document.getElementById('weight').value = '';
+            document.getElementById('length').value = '';
+            document.getElementById('width').value = '';
+            document.getElementById('height').value = '';
+            document.getElementById('bookingDate').value = '';
+            document.getElementById('estimated-price').value = '';
+        }
+    </script>
+    
 </body>
 
 </html>
