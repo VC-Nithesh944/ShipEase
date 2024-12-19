@@ -32,7 +32,7 @@ body {
 .background-div {
     width: 100vw;
     height: 73vh;
-    background-image: url('Pictures/road.jpg'); /* Replace with your image path */
+    background-image: url('../Pictures/road.jpg'); /* Replace with your image path */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -98,9 +98,9 @@ label {
 }
 
 input[type="text"] { 
-    width: 100%;
-    padding: 5px;
-    margin-top: 0px;
+    width: 37%;
+    padding: 7px;
+    margin-top: 15px;
     margin-bottom: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
@@ -185,6 +185,8 @@ select{
     width: 100%; /* Make it fill the parent container */
     border: 1px solid #ddd; /* Optional: add a border */
 }
+
+
 /*  */
 
 /*  */

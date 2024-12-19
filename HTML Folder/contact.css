@@ -7,6 +7,7 @@ body {
     background-color: #cdfaff;
 }
 
+
 .container {
     width: 80%;
     max-width: 1200px;
@@ -27,7 +28,7 @@ body {
     height: auto;
     position: absolute;
     top: 0px;
-    left: 10px;
+    left: 0px;
 }
 
 .page-header h1 {
@@ -126,6 +127,9 @@ body {
 
 .btn:hover {
     background-color: #0097a7;
+    transform: scale(1.01); /* Slightly scale the button on hover */
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2)
+    
 }
 
 
@@ -175,21 +179,35 @@ body {
         font-size: 80px;
           height: auto;
           width: auto; 
+          transition: color 0.3s ease, transform 0.3s ease; /* Added transition for smooth effect */
           
+}
+.insta:hover {
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.2); /* Slightly scale the icon on hover */
 }
 .facebook{
     display: inline-block;
     font-size: 80px;
       height: auto;
       width: auto; 
+      transition: color 0.3s ease, transform 0.3s ease;
+}
+.facebook:hover {
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.2); /* Slightly scale the icon on hover */
 }
 .twitter{
     display: inline-block;
     font-size: 80px;
       height: auto;
       width: auto;
+      transition: color 0.3s ease, transform 0.3s ease;
 }
-
+.twitter:hover {
+    color: #007bff; /* Change color on hover */
+    transform: scale(1.2); /* Slightly scale the icon on hover */
+}
  /* /* faq */
 
 .faq-container {
@@ -283,14 +301,20 @@ a{
 }
 .foot-panel{
     background-color: #37475a;
-    color: white;
+    color: rgb(255, 255, 255);
     height: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 0.5rem;
+    font-size: 2 rem;
+    
 
 }
+.foot-panel a{
+    color: white;
+    text-decoration: none;
+}
+
 
 .foot-panel2{
     background-color: #222f3d;

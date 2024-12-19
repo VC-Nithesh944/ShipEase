@@ -28,3 +28,62 @@ Combine with media queries to handle different screen sizes and device types eff
 .slide:nth-child(1) { animation-delay: 0s; }
 .slide:nth-child(2) { animation-delay: 3s; }
 .slide:nth-child(3) { animation-delay: 9s; }
+
+<script>
+                function validateForm() {
+                    // Get values from the form
+                    const from = document.getElementById("sourceLocation").value;
+                    const to = document.getElementById("destinationLocation").value;
+                    const bookingType = document.getElementById("bookingType").value;
+                    const weight = document.getElementById("weight").value;
+                    const length = document.getElementById("length").value;
+                    const width = document.getElementById("width").value;
+                    const height = document.getElementById("height").value;
+            
+                    // Validate inputs
+                    if (!from || !to || !bookingType || !weight || !length || !width || !height) {
+                        alert("Please fill in all required fields.");
+                        return;
+                    }
+            
+                    // Calculate volume weight
+                    const volumeWeight = (length * width * height) / 5000; // Example formula
+                    const chargeableWeight = Math.max(volumeWeight, weight);
+            
+                    // Fetch rates from JSON (simulated here with a static object)
+                    fetch('rates.json')
+                        .then(response => response.json())
+                        .then(rates => {
+                            const costPerKg = rates.bookingTypes[bookingType][to];
+                            const estimatedCost = chargeableWeight * costPerKg;
+            
+                            // Display result
+                            const resultBox = document.getElementById("resultBox");
+                            document.getElementById("resultText").textContent = `₹${estimatedCost.toFixed(2)} (${chargeableWeight.toFixed(2)} kg chargeable weight)`;
+                            resultBox.style.display = "block";
+            
+                            // Show confirm button
+                            const confirmButton = document.getElementById("confirmButton");
+                            confirmButton.style.display = "inline-block";
+                            confirmButton.onclick = () => alert("Shipment confirmed!");
+                        })
+                        .catch(error => console.error("Error fetching rates:", error));
+                }
+            
+                function resetValues() {
+                    // Clear all form inputs
+                    document.getElementById("sourceLocation").value = "";
+                    document.getElementById("destinationLocation").value = "";
+                    document.getElementById("weight").value = "";
+                    document.getElementById("length").value = "";
+                    document.getElementById("width").value = "";
+                    document.getElementById("height").value = "";
+                    document.getElementById("bookingType").value = "";
+                    document.getElementById("bookingDate").value = "";
+            
+                    // Hide result box and confirm button
+                    document.getElementById("resultBox").style.display = "none";
+                    document.getElementById("confirmButton").style.display = "none";
+                }
+            </script>
+                      
