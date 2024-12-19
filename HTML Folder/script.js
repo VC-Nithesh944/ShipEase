@@ -1,41 +1,73 @@
-// Function to show Login Form
+// Function to show the Login Form
 function showLoginForm() {
     document.getElementById("LoginForm").style.display = "block";
     document.getElementById("SignupForm").style.display = "none";
     document.getElementById("wrapped").style.display = "block";
     document.getElementById("bgimage1").style.display = "none";
+    document.getElementById("main").style.display = "none";
+    document.getElementById("footer").style.display = "none";
 }
 
-// Function to show Signup Form
+// Function to show the Signup Form
 function showSignUpForm() {
     document.getElementById("LoginForm").style.display = "none";
     document.getElementById("SignupForm").style.display = "block";
     document.getElementById("wrapped").style.display = "block";
     document.getElementById("bgimage1").style.display = "none";
+    document.getElementById("footer").style.display = "none";
 }
 
+// Function to update the navbar buttons and welcome message
 function updateNavbarButtons() {
-    const token = localStorage.getItem('jwt'); // Check if JWT exists
+    const token = localStorage.getItem('jwt'); // Retrieve JWT from localStorage
     const loginButton = document.getElementById('loginButton');
     const signupButton = document.getElementById('signupButton');
     const logoutButton = document.getElementById('logoutButton');
+    const welcomeMessage = document.getElementById('welcomeMessage');
 
     if (token) {
+        const user = parseJwt(token); // Decode the token to get the username
         loginButton.style.display = 'none';
         signupButton.style.display = 'none';
-        logoutButton.style.display = 'inline'; // Show logout button
+        logoutButton.style.display = 'inline'; // Show the logout button
+        welcomeMessage.textContent = `Hi, ${user.username}! Welcome to ShipEase`;
     } else {
         loginButton.style.display = 'inline';
         signupButton.style.display = 'inline';
-        logoutButton.style.display = 'none'; // Hide logout button
+        logoutButton.style.display = 'none'; // Hide the logout button
+        welcomeMessage.textContent = 'Hi, Welcome to ShipEase';
     }
+}
+function parseJwt(token) {
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const jsonPayload = decodeURIComponent(
+        atob(base64)
+            .split('')
+            .map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)
+            .join('')
+    );
+    return JSON.parse(jsonPayload);
 }
 
 // Call this function on page load to set the initial state
-document.addEventListener('DOMContentLoaded', updateNavbarButtons);
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('jwt');
+    if (token) {
+        try {
+            const decodedToken = jwt_decode(token);
+            const loggedInUsername = decodedToken.username;
+
+            // Update the welcome message
+            document.getElementById('welcomeMessage').innerText = `Hi, Welcome to ShipEase, ${loggedInUsername}!`;
+        } catch (error) {
+            console.error('Error decoding token:', error);
+        }
+    }
+    updateNavbarButtons(); // Update button visibility
+});
 
 
-// Function to handle Login form submission
 function login(event) {
     event.preventDefault();
 
@@ -47,24 +79,25 @@ function login(event) {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, password }),
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.token) {
-            localStorage.setItem('jwt', data.token); // Save JWT to localStorage
-            alert('Login successful!');
-            updateNavbarButtons(); // Update button visibility
-            document.getElementById('LoginForm').style.display = 'none';
-            document.getElementById('wrapped').style.display = 'none';
-            document.getElementById('bgimage1').style.display = 'block';
-        } else {
-            alert(data.message || 'Login failed!');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('An error occurred. Please try again.');
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.token) {
+                localStorage.setItem('jwt', data.token); // Save JWT to localStorage
+                alert('Login successful!');
+                updateNavbarButtons(); // Update the navbar buttons
+                document.getElementById('LoginForm').style.display = 'none';
+                document.getElementById('wrapped').style.display = 'none';
+                document.getElementById('bgimage1').style.display = 'block';
+            } else {
+                alert(data.message || 'Login failed!');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
 }
+
 
 async function signup(event) {
     event.preventDefault();
@@ -102,6 +135,7 @@ async function signup(event) {
 
 function logout() {
     localStorage.removeItem('jwt'); // Remove JWT from localStorage
+    document.getElementById('welcomeMessage').innerText = 'Hi, Welcome to ShipEase';
     alert('You have been logged out.');
     updateNavbarButtons(); // Update button visibility
 }

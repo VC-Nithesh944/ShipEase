@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,11 @@
     <link rel="stylesheet" href="style2.css">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
 </head>
+
 <body>
     <!-- Navbar Container -->
     <div class="container">
-        <div class="logo">
-            <a href="index.html"><img src="Pictures/logo.png" alt="SH" style="height: 30px;"></a>
-            
-        </div>
+            <a href="index.html"><img src="Pictures/logo.png" alt="SH" ></a>
         <nav class="navbar">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -24,20 +23,50 @@
             </ul>
         </nav>
         <nav class="navbar2">
-            <nav class="navbar2">
-                <ul>
-                    <li><a id="loginButton" class="log" href="#" onclick="showLoginForm()">LOGIN</a></li>
-                    <li><a id="signupButton" class="sign1" href="#" onclick="showSignUpForm()">SIGN UP</a></li>
-                    <li><a id="logoutButton" class="log" href="#" onclick="logout()" style="display: none;">LOGOUT</a></li>
-                </ul>
-            </nav>
-          
+            <ul>
+                <li><a id="loginButton" class="log" href="#" onclick="showLoginForm()">LOGIN</a></li>
+                <li><a id="signupButton" class="sign1" href="#" onclick="showSignUpForm()">SIGN UP</a></li>
+                <li><a id="logoutButton" class="logout" href="#" onclick="logout()">LOGOUT</a></li>
+            </ul>
+        </nav>
     </div>
+
+    <!-- Background Image Section -->
     <div class="bgimage" id="bgimage1">
-            <div class="overlay">
-                <h1>"Hi,<br> Welcome to ShipEase"</h1>
+        <div class="overlay" id="welcomeMessage">
+            <h1>Hi,<br> Welcome to ShipEase</h1>
+        </div>
+    </div>
+
+    <!-- Content Section -->
+    <main id="main">
+        <section class="hero">
+            <h2>Revolutionizing Logistics</h2>
+            <p>Efficient, Reliable, and Innovative Solutions for Your Supply Chain</p>
+        </section>
+        <section class="features-wrapper">
+            <div class="circle-image"></div>
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-cogs"></i>
+                    <h3>24x7<br>Support</h3>
+                    <p>We’re here to assist you anytime</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-heart"></i>
+                    <h3>Real-Time<br>Tracking</h3>
+                    <p>Monitor your shipments with accurate</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Affordable<br>Pricing</h3>
+                    <p>Top-notch solutions at competitive rates</p>
+                </div>
             </div>
-    </div>  
+        </section>
+    </main>
+    
+
     <!-- Wrapper for Forms -->
     <div class="wrapper" id="wrapped" style="display:none">
         <!-- Login Form -->
@@ -85,8 +114,12 @@
                 </div>
             </form>
         </div>
+    </div>
+    <footer class="page-footer" id="footer">
+        <p>&copy; 2024 ShipEase. All rights reserved.</p>
+    </footer>
 
-    <!-- JavaScript for Form Toggle -->
     <script src="script.js"></script>
 </body>
+
 </html>
