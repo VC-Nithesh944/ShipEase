@@ -315,6 +315,11 @@ a{
     text-decoration: none;
 }
 
+.foot-panel a:hover{
+    color: whitesmoke; /* Change color on hover */
+    transform: scale(1.2);
+}
+
 
 .foot-panel2{
     background-color: #222f3d;
