@@ -70,7 +70,7 @@
     <!-- Wrapper for Forms -->
     <div class="wrapper" id="wrapped" style="display:none">
         <!-- Login Form -->
-        <div class="login-form" id="LoginForm" style="display:none">
+        <div class="login-form" id="LoginForm" style="display:none" onsubmit="login(event)">
             <h2>Login</h2>
             <form id="loginForm">
                 <div class="input-box">
@@ -89,7 +89,7 @@
         </div>
 
         <!-- Signup Form -->
-        <div class="signup-form" id="SignupForm" style="display:none">
+        <div class="signup-form" id="SignupForm" style="display:none" onsubmit="saveUserdata(event)">
             <h2>Sign Up</h2>
             <form id="signupForm">
                 <div class="input-box">
