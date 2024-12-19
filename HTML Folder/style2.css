@@ -1,107 +1,54 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-* {  
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
-}  
+}
 
-body {  
+body {
+    background-color: #1ac6ff;
     display: flex;
-    background-color: #f5f7fa;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    /* min-height: 100vh;
-    background-image: url("/HTML Folder/Pictures/home.jpg"); */
-    background-size: cover;
-    
+    width: 100%;
 }
 
-.bgimage {
-    width: 100%; /* Ensure it spans the full width of the viewport */
-    height: 60vh; /* Maintain proportional height */
-    margin-top: 68px; /* Matches the navbar height */
-    background-image: url(Pictures/home.jpg);
-    background-size: cover;
-    background-position: center; /* Centers the background */
-    background-repeat: no-repeat;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
+/* Navbar */
+.container {
     display: flex;
-    justify-content: left; /* Center the overlay horizontally */
-    align-items: center; /* Center the overlay vertically */
-    position: relative; /* Ensure proper stacking with other elements */
-    z-index: 0; /* Prevent overlapping of other elements */
-}
-
-.overlay {
-    background-color: rgba(255, 248, 220, 0.8);
-    margin-left : 40px; /* Fix opacity */
-    padding: 40px;
-    display: flex;
-    flex-direction: column; /* Allows alignment adjustments */
-    align-items: flex-start; /* Align content to the left */
-    justify-content: center; /* Center content vertically */
-    border-radius: 10px;
-    max-width: 90%; 
-    text-align: left;
-}
-
-.overlay h1 {
-    font-size: 60px;
-    color: black;
-    line-height: 1.2; /* Improves readability */
-}
-
-
-.logo img {
-    scale: 210%;
-    position: fixed;
-    display : flex-box;
-    top: 0px;
-    left: 18px;
-    margin: 18px 0 18px 0;
-    z-index: 1;
-}
-
-nav.navbar {  
-    display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
     background-color: #69f3ff;
+    padding: 15px 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 68px;
-    padding: 15px 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 }
 
-nav.navbar2 {
-    display : flex;
-    position: fixed;
+.container img {
+    width: 58px;
+    height: auto;
+    position: absolute;
     top: 0;
-    right: 0px;
-    height: 68px;
-    padding : 15px 20px;
+    left: 0;
+    z-index: 0;
 }
 
-nav.navbar ul {
-    list-style-type: none;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
+nav.navbar ul,
 nav.navbar2 ul {
     list-style-type: none;
     display: flex;
-    align-items: center;
     gap: 15px;
+    align-items: center;
 }
 
-.navbar a, .navbar2 a {
+.navbar a,
+.navbar2 a {
     text-decoration: none;
     font-size: 18px;
     padding: 8px 16px;
@@ -110,59 +57,178 @@ nav.navbar2 ul {
     transition: 0.3s;
 }
 
-.navbar2 a.sign1, .navbar2 a.log {
+.navbar2 a.sign1,
+.navbar2 a.log,
+.navbar2 a.logout {
     background-color: #ffffff;
     border: 1px solid #4a4a4a;
 }
 
-.navbar2 a.sign1:hover, .navbar2 a.log:hover, .navbar a:hover {
+.navbar2 a.sign1:hover,
+.navbar2 a.log:hover,
+.navbar a:hover,
+.navbar2 a.logout:hover {
     background-color: #4a4a4a;
     color: #ffffff;
 }
 
-.wrapper {
+/* Background Image Section */
+.bgimage {
+    width: 100%;
+    height: 60vh;
+    /* Fixed height for the image */
+    background-image: url('Pictures/home.jpg');
+    /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
-    width: 1000px;
-    margin: 120px 30px 0 30px;
-    padding: 0px 20px 0 20px;
-    height: 500px;
+}
+
+.overlay {
+    background-color: rgba(255, 248, 220, 0.8);
+    padding: 40px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 50px;
+}
+
+.overlay h1 {
+    font-size: 3rem;
+    color: black;
+    line-height: 1.2;
+}
+
+/* New Section Below Image */
+main {
+    margin-top: 0;
+    /* Ensure it starts immediately below the header or background */
+    width: 100%;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1ac6ff;
+    border-top: 1px solid #ddd;
+}
+
+.hero h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.hero p {
+    font-size: 1.25rem;
+    color: #666;
+}
+
+/* Features Section */
+.features {
+    display: flex;
+    margin-top: 70px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    /* Space between the feature boxes */
+    padding: 2rem;
+    background-color: #81ddff;
+    position: relative;
+    flex-wrap: wrap;
+    /* Ensures responsiveness on smaller screens */
+}
+
+.features .feature {
+    text-align: center;
+    width: 250px;
+    /* Set a consistent width for each feature */
+    background-color: #f9f9f9;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.features .feature i {
+    font-size: 3rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.features .feature h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.features .feature p {
+    font-size: 1rem;
+    color: #666;
+}
+
+/* Circular Image Above Features */
+.circle-image {
+    position: absolute;
+    top: -100px;
+    /* Ensure it doesn't overlap with the text */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 120px;
+    background-image: url("Pictures/features.jpg");
+    /* Replace with your image path */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 50%;
+    /* Makes the image circular */
+    border: 4px solid #fff;
+    /* Optional border for better design */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* Add depth */
+}
+
+
+.features-wrapper {
+    position: relative;
+    margin-top: 80px;
+    /* Ensures proper spacing below the circular image */
+}
+
+.page-footer {
+    width: 100%;
+    background-color: #00e5ff;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: 50px;
+}
+
+.page-footer p {
+    font-size: 22px;
+}
+
+/* Forms */
+.wrapper {
+    width: 90%;
+    max-width: 500px;
+    margin: 23.5vh auto;
+    padding: 2rem;
     background: #ffffff;
     border-radius: 20px;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15);
-    display: flex;
-    overflow: hidden;
 }
 
 
-.image-slider {
-    width: 50%;
-    position: relative;
-}
-
-.image-slider img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    transition: left 0.6s ease-in-out;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-}
-
-.image-slider img.active {
-    left: 0;
-}
-
+.login-form,
 .signup-form {
-    flex: 1;
-    padding: 30px 40px 30px 40px;
-}
-.login-form {
-    flex: 1;
-    padding: 70px 40px 30px 40px;
+    text-align: center;
 }
 
-h2, .sign {
+h2 {
     font-size: 36px;
     color: #333;
     margin-bottom: 20px;
@@ -175,7 +241,6 @@ h2, .sign {
 
 .input-box input {
     width: 100%;
-    display : flex;
     padding: 10px 15px;
     font-size: 18px;
     border: 1px solid #ddd;
@@ -197,15 +262,6 @@ h2, .sign {
     font-size: 14px;
 }
 
-.input-box .rm{
-    display : flex;
-    width : 275px;
-    background-color: black;
-    scale : 1.2;
-}
-
-
-
 .btn {
     width: 100%;
     padding: 12px 0;
@@ -222,22 +278,22 @@ h2, .sign {
     background-color: #0097a7;
 }
 
-.logreg-link, .signreg-link {
+.logreg-link,
+.signreg-link {
     font-size: 16px;
     color: #666;
     margin-top: 10px;
-    display: block;
-    text-align: center;
 }
 
-.logreg-link a, .signreg-link a {
+.logreg-link a,
+.signreg-link a {
     color: #00bcd4;
     text-decoration: none;
     font-weight: 500;
 }
 
-.logreg-link a:hover, .signreg-link a:hover {
+.logreg-link a:hover,
+.signreg-link a:hover {
     color: #0097a7;
     text-decoration: underline;
 }
-
