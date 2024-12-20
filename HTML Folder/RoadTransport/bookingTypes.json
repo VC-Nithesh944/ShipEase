@@ -1,0 +1,6 @@
+[
+    {"value": "Normal", "text": "Normal"},
+    {"value": "Express", "text": "Express"},
+    {"value": "Refrigerated", "text": "Refrigerated"},
+    {"value": "Hazardous", "text": "Hazardous"}
+]

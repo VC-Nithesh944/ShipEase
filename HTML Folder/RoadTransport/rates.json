@@ -1,0 +1,60 @@
+{
+  "bookingTypes": {
+    "Normal": {
+      "del": 10,
+      "bom": 12,
+      "blr": 8,
+      "hyd": 9,
+      "chn": 11,
+      "amd": 7,
+      "pune": 6,
+      "mys": 8,
+      "sur": 6,
+      "jpr": 10,
+      "lko": 8,
+      "viz": 12,
+      "bhp": 7,
+      "raj": 7,
+      "noida": 9,
+      "mad": 11,
+      "kochi": 10,
+      "ldh": 12
+    },
+    "Express": {
+      "del": 15,
+      "bom": 17,
+      "blr": 14,
+      "hyd": 16,
+      "chn": 18,
+      "amd": 13,
+      "pune": 12,
+      "jpr": 15,
+      "lko": 14,
+      "viz": 17,
+      "bhp": 13,
+      "raj": 13,
+      "mad": 18,
+      "kochi": 17
+    },
+    "Refrigerated": {
+      "del": 25,
+      "bom": 28,
+      "blr": 23,
+      "hyd": 24,
+      "chn": 26,
+      "amd": 22,
+      "pune": 21
+    },
+    "Hazardous": {
+      "del": 30,
+      "bom": 35,
+      "blr": 32,
+      "hyd": 33,
+      "chn": 36,
+      "amd": 31,
+      "pune": 30,
+      "jpr": 34,
+      "lko": 32
+    }
+  }
+}

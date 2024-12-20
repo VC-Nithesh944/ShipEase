@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact us</title>
     <link rel="stylesheet" href="contact.css">
+<!-- <link rel="stylesheet" href="https://script.google.com/macros/s/AKfycbzJRACLylvkuIfmKpVauATnFAeXcBr4C9F5raI_n5r56BUcOpwxiGsnV93FtH7xiR2-1w/exec"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 <body>
     <header class="page-header">
-        <img class="img" src="Pictures/logo.png" alt="ShipEase Logo">
+        <a href="index.html"><img class="img" src="Pictures/logo.png" alt="ShipEase Logo"></a>
         <h1>Contact Us</h1>
     </header>
     <div class="info">
@@ -30,7 +31,12 @@
     <div class="contact-form" id="contact-Form" style="display: block;">
         <h2>Details</h2>
 
-        <form action="#">
+    <!-- <form name='submit-to-google-sheet'> -->
+        <!-- <form autocomplete="off" method="post" name='google-sheet'></form> -->
+        <form id="myForm" action="https://api.web3forms.com/submit" method="POST">
+            
+         <!-- <form onsubmit="sendMail(); reset(); return false;"> -->
+            <input type="hidden" name="access_key" value="fcf9de80-9fd5-48e6-a123-feb81202067d">
             <div class="input-box">
                 <label>Name: </label>
                 <input type="text" name="name" required>
@@ -43,25 +49,66 @@
             </div>
             <div class="input-box">
                 <label for="phone">Phone Number: </label>
-                <input type="tel" id="phone" name="phone" placeholder="9876543210" pattern="[0-9]{10}" required>
+                <input type="tel" id="phone" name="phone"  pattern="[0-9]{10}" required>
             </div>
             <div class="input-box">
                 <label>Subject: </label>
                 <input type="text" name="Topic" required>
                 <br>
                 <div class="input-box">
-                    <label for="message">Message: </label>
-                    <textarea id="message" name="message" rows="5"></textarea>
+                    <label>Message: </label>
+                <input type="text" name="message" required>
 
                 </div>
 
             </div>
             <button type="submit" class="btn">Submit</button>
-
+            
         </form>
-
     </div>
+    <!-- JavaScript for reseting the form -->
+    <!-- <script>document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent the default form submission behavior
 
+        // Do something with form data (e.g., send it to a server)
+        console.log("Form submitted!");
+
+        // Reset the form
+        this.reset();
+    });
+    </script> -->
+
+      <!-- <script src="https://smtpjs.com/v3/smtp.js"></script>
+      <script>
+        function sendMail() {
+            Email.send({
+    Host : "smtp.gmail.com",
+    Username : "manojkumar.cs23@bmsce.ac.in",
+    Password : "Manojkumar@999!",
+    To : 'manojkumarnalwar@gmail.com',
+    From : document.getElementById("email").value,
+    Subject : "This is the subject",
+    Body : "And this is the body"
+}).then(
+  message => alert(message)
+);
+        }
+      </script> -->
+        <!-- <script>
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbz8dNabj9wDdUIrz6iVJDypSoIQghKNSEXZ_3FuJRjPVtqqVVnX9hC9iEx38ut-yA4w/exec'
+            const form = document.forms['submit-to-google-sheet']
+          
+            form.addEventListener('submit', e => {
+              e.preventDefault()
+              fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+                .then(response => console.log('Success!', response))
+                .catch(error => console.error('Error!', error.message))
+            })
+          </script> -->
+   
+
+    <!-- JavaScript -->
+   
     <!-- 
     FAQs -->
     <div class="faq-container">
@@ -117,7 +164,7 @@
         </div>
     </div>
     </div>
-
+<!-- JavaScript -->
     <script>
         // JavaScript to toggle visibility of answers
         const questions = document.querySelectorAll('.faq-question');
@@ -132,7 +179,9 @@
                 }
             });
         });
-    </script>
+   
+       
+      </script>
 
 
     <div class="info_p1">
@@ -158,7 +207,7 @@
 
     <footer>
         <div class="foot-panel">
-
+            <a href="contact.html">Back to Top</a>
         </div>
         <div class="foot-panel2">
             <ul>
