@@ -167,7 +167,7 @@ function resetValues() {
 }
 
 async function addTransportData() {
-    let totalPrice = await calculatePrice();
+    let totalPrice = await calculatePrice(); // to use await fun should be async 
     let transportData = getAllTransportVariable();
     transportData.totalPrice = totalPrice;
     const token = localStorage.getItem('Authorization');
