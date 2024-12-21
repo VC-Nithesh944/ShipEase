@@ -8,7 +8,6 @@ dotenv.config(); // Load environment variables from .env file
 const uri = process.env.MONGODB_URL; // Example: mongodb://localhost:27017
 const client = new MongoClient(uri);
 
-
 async function connectDB() {
   try {
       await client.connect();
@@ -88,9 +87,7 @@ app.post('/login', async (req, res) => {
     // Send successful login response
     res.status(200).send({
       message: 'Login-successful',
-
-      // userId: user._id, 
-      token: generateToken(user._id, user.Email),
+      token: generateToken(user._id, user.Password),
     });
 } catch (err) {
     res.status(500).send('Error saving data: ' + err.message);
@@ -116,18 +113,18 @@ function generateToken(userId, username) {
 app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
   try {
     // const {}
-    const {fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate} = req.body;
+    const {fromLocation, toLocation, bookingType, weight, length, width, height, price} = req.body;
 
     const clientId = req.user.id;
     // Validate inputs
-    if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height) || !clientId || !bookingDate || !deliveryDate ) {
+    if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height) || !clientId) {
       res.status(400).send('Please enter all the fields');
       return;
     }
 
-    const collection = db.collection('Transport'); // Replace with your collection name
+    const collection = db.collection('transport'); // Replace with your collection name
     const data = await collection.insertOne({
-      clientId, fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate
+      clientId, fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice
     })
     res.status(200).json(data);
   } catch (err) {
@@ -135,9 +132,10 @@ app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
   }
 });
 
+
 app.get('/api/getMyTransportRequests', authenticateToken, async (req, res) => {
   try {
-    const collection = db.collection('Transport'); // Replace with your collection name
+    const collection = db.collection('transport'); // Replace with your collection name
     const data = await collection.find({clientId:req.user.id}).toArray();
     res.status(200).json(data);
   } catch (err) {
@@ -160,6 +158,7 @@ function authenticateToken(req, res, next) {
       next();
   });
 }
+
 
 const port = process.env.PORT || 1000;
 app.listen(port, () => {
