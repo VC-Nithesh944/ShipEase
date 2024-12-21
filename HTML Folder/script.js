@@ -1,72 +1,73 @@
 // Function to show the Login Form
 function showLoginForm() {
-    document.getElementById("LoginForm").style.display = "block";
-    document.getElementById("SignupForm").style.display = "none";
-    document.getElementById("wrapped").style.display = "block";
-    document.getElementById("bgimage1").style.display = "none";
-    document.getElementById("main").style.display = "none";
-    document.getElementById("footer").style.display = "none";
+  document.getElementById("LoginForm").style.display = "block";
+  document.getElementById("SignupForm").style.display = "none";
+  document.getElementById("wrapped").style.display = "block";
+  document.getElementById("bgimage1").style.display = "none";
+  document.getElementById("main").style.display = "none";
+  document.getElementById("footer").style.display = "none";
 }
 
 // Function to show the Signup Form
 function showSignUpForm() {
-    document.getElementById("LoginForm").style.display = "none";
-    document.getElementById("SignupForm").style.display = "block";
-    document.getElementById("wrapped").style.display = "block";
-    document.getElementById("bgimage1").style.display = "none";
-    document.getElementById("footer").style.display = "none";
+  document.getElementById("LoginForm").style.display = "none";
+  document.getElementById("SignupForm").style.display = "block";
+  document.getElementById("wrapped").style.display = "block";
+  document.getElementById("bgimage1").style.display = "none";
+  document.getElementById("footer").style.display = "none";
 }
 
 // Function to update the navbar buttons and welcome message
 function updateNavbarButtons() {
-    const token = localStorage.getItem('jwt'); // Retrieve JWT from localStorage
-    const loginButton = document.getElementById('loginButton');
-    const signupButton = document.getElementById('signupButton');
-    const logoutButton = document.getElementById('logoutButton');
-    const welcomeMessage = document.getElementById('welcomeMessage');
+  const token = localStorage.getItem("jwt"); // Retrieve JWT from localStorage
+  const loginButton = document.getElementById("loginButton");
+  const signupButton = document.getElementById("signupButton");
+  const logoutButton = document.getElementById("logoutButton");
+  const welcomeMessage = document.getElementById("welcomeMessage");
 
-    if (token) {
-        const user = parseJwt(token); // Decode the token to get the username
-        loginButton.style.display = 'none';
-        signupButton.style.display = 'none';
-        logoutButton.style.display = 'inline'; // Show the logout button
-        welcomeMessage.textContent = `Hi, ${user.username}! Welcome to ShipEase`;
-    } else {
-        loginButton.style.display = 'inline';
-        signupButton.style.display = 'inline';
-        logoutButton.style.display = 'none'; // Hide the logout button
-        welcomeMessage.textContent = 'Hi, Welcome to ShipEase';
-    }
+  if (token) {
+    const user = parseJwt(token); // Decode the token to get the username
+    loginButton.style.display = "none";
+    signupButton.style.display = "none";
+    logoutButton.style.display = "inline"; // Show the logout button
+    welcomeMessage.textContent = `Hi, ${user.username}! Welcome to ShipEase`;
+  } else {
+    loginButton.style.display = "inline";
+    signupButton.style.display = "inline";
+    logoutButton.style.display = "none"; // Hide the logout button
+    welcomeMessage.textContent = "Hi, Welcome to ShipEase";
+  }
 }
 function parseJwt(token) {
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const jsonPayload = decodeURIComponent(
-        atob(base64)
-            .split('')
-            .map(c => `%${('00' + c.charCodeAt(0).toString(16)).slice(-2)}`)
-            .join('')
-    );
-    return JSON.parse(jsonPayload);
+  const base64Url = token.split(".")[1];
+  const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+  const jsonPayload = decodeURIComponent(
+    atob(base64)
+      .split("")
+      .map((c) => `%${("00" + c.charCodeAt(0).toString(16)).slice(-2)}`)
+      .join("")
+  );
+  return JSON.parse(jsonPayload);
 }
 
 // Call this function on page load to set the initial state
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('jwt');
-    if (token) {
-        try {
-            const decodedToken = jwt_decode(token);
-            const loggedInUsername = decodedToken.username;
+document.addEventListener("DOMContentLoaded", () => {
+  const token = localStorage.getItem("jwt");
+  if (token) {
+    try {
+      const decodedToken = jwt_decode(token);
+      const loggedInUsername = decodedToken.username;
 
-            // Update the welcome message
-            document.getElementById('welcomeMessage').innerText = `Hi, Welcome to ShipEase, ${loggedInUsername}!`;
-        } catch (error) {
-            console.error('Error decoding token:', error);
-        }
+      // Update the welcome message
+      document.getElementById(
+        "welcomeMessage"
+      ).innerText = `Hi, Welcome to ShipEase, ${loggedInUsername}!`;
+    } catch (error) {
+      console.error("Error decoding token:", error);
     }
-    updateNavbarButtons(); // Update button visibility
+  }
+  updateNavbarButtons(); // Update button visibility
 });
-
 
 // function login(event) {
 //     event.preventDefault();
@@ -97,7 +98,6 @@ document.addEventListener('DOMContentLoaded', () => {
 //             alert('An error occurred. Please try again.');
 //         });
 // }
-
 
 // async function signup(event) {
 //     event.preventDefault();
@@ -134,13 +134,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // }
 
 function logout() {
-    localStorage.removeItem('jwt'); // Remove JWT from localStorage
-    document.getElementById('welcomeMessage').innerText = 'Hi, Welcome to ShipEase';
-    alert('You have been logged out.');
-    updateNavbarButtons(); // Update button visibility
+  localStorage.removeItem("jwt"); // Remove JWT from localStorage
+  document.getElementById("welcomeMessage").innerText =
+    "Hi, Welcome to ShipEase";
+  alert("You have been logged out.");
+  updateNavbarButtons(); // Update button visibility
 }
-
-
 
 // Add event listeners to the forms
 // document.querySelector("#LoginForm form").addEventListener("submit", login);

@@ -190,7 +190,11 @@
                 <button type="reset" onclick="resetValues()">RESET</button>
             </div>
             <!-- <label for="estimated-price">Estimated Price:</label> -->
-            <input type="text" id="estimated-price" placeholder="Estimated Price" readonly />
+            <!-- <input type="text" id="estimated-price" placeholder="Estimated Price" readonly /> -->
+            <div id = "result">
+                <input style="flex: 1;" type="text" id="estimated-price" placeholder="Estimated Price" readonly />
+                <input style="flex: 1;" type="text" id="delivery-date" placeholder="Delivery Date" readonly />
+            </div>
             <br>
             <button type="button" onclick="validateForm()">CONFIRM</button>
         </div>
@@ -330,21 +334,6 @@
         //             alert("Failed to fetch rates. Please try again.");
         //         });
         // }
-    </script>
-    <script>
-        // Function to reset all input fields to their default values
-        function resetValues() {
-            // Reset dropdowns
-            document.getElementById('sourceLocation').selectedIndex = 0;
-            document.getElementById('destinationLocation').selectedIndex = 0;
-            document.getElementById('bookingType').selectedIndex = 0;
-            document.getElementById('weight').value = '';
-            document.getElementById('length').value = '';
-            document.getElementById('width').value = '';
-            document.getElementById('height').value = '';
-            document.getElementById('bookingDate').value = '';
-            document.getElementById('estimated-price').value = '';
-        }
     </script>
 
 </body>

@@ -88,6 +88,7 @@ function calculatePrice() {
     const length = parseFloat(document.getElementById("length").value);
     const width = parseFloat(document.getElementById("width").value);
     const height = parseFloat(document.getElementById("height").value);
+    const bookingDate = document.getElementById("bookingDate").value;
 
     // Validate inputs
     if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height)) {
@@ -99,15 +100,14 @@ function calculatePrice() {
     const volumeWeight = (length * width * height) / 5000;
     const chargeableWeight = Math.max(weight, volumeWeight);
 
-    // Fetch rates.json and calculate the price
+    // Fetch rates.json to get rates for calculation
     fetch("rates.json")
         .then((response) => response.json())
         .then((rates) => {
-            // Get rates for the selected booking type and destination
-            const ratePerKg = rates.bookingTypes[bookingType][toLocation];
-
+            // Get the rate per kg for the booking type and destination
+            const ratePerKg = rates.bookingTypes?.[bookingType]?.[toLocation];
             if (!ratePerKg) {
-                alert("Rates not available for the selected destination or booking type.");
+                alert("Rates are not available for the selected destination or booking type.");
                 return;
             }
 
@@ -116,9 +116,44 @@ function calculatePrice() {
 
             // Display the estimated price
             document.getElementById("estimated-price").value = `₹${totalPrice.toFixed(2)}`;
+
+            // Calculate and display the delivery date
+            const deliveryDays = getDeliveryDays(bookingType);
+            const deliveryDate = calculateDeliveryDate(bookingDate, deliveryDays);
+            document.getElementById("delivery-date").value = deliveryDate;
         })
         .catch((error) => {
             console.error("Error fetching rates.json:", error);
             alert("Failed to fetch rates. Please try again.");
         });
+}
+
+function getDeliveryDays(bookingTypes) {
+    const deliveryTimes = {
+        normal: 3,
+        express: 1,
+        refrigerated: 5,
+        hazardous: 7,
+    };
+    return deliveryTimes[bookingTypes.toLowerCase()] || 3; // Default to 3 days if type not found
+}
+
+function calculateDeliveryDate(bookingDate, daysToAdd) {
+    const date = new Date(bookingDate);
+    date.setDate(date.getDate() + daysToAdd);
+    return date.toISOString().split("T")[0]; // Return date in YYYY-MM-DD format
+}
+
+function resetValues() {
+    // Reset dropdowns
+    document.getElementById('sourceLocation').selectedIndex = 0;
+    document.getElementById('destinationLocation').selectedIndex = 0;
+    document.getElementById('bookingType').selectedIndex = 0;
+    document.getElementById('weight').value = '';
+    document.getElementById('length').value = '';
+    document.getElementById('width').value = '';
+    document.getElementById('height').value = '';
+    document.getElementById('bookingDate').value = '';
+    document.getElementById('estimated-price').value = '';
+    document.getElementById('delivery-date').value = '';
 }

@@ -120,6 +120,11 @@ button:hover {
     background-color: #00c8e0;
 }
 
+#result {
+    display: flex;
+    gap: 105px;
+}
+
 /* Link styling */
 a {
     color: #00e5ff;
