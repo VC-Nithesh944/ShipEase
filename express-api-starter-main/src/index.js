@@ -5,6 +5,9 @@ const dotenv = require('dotenv');
 const { token } = require('morgan');
 dotenv.config(); // Load environment variables from .env file
 
+const nodemailer = require('nodemailer');
+const { getMyTransporter } = require('./mailSender');
+
 const uri = process.env.MONGODB_URL; // Example: mongodb://localhost:27017
 const client = new MongoClient(uri);
 
@@ -61,8 +64,12 @@ app.post('/registerUser', async (req, res) => {
         return res.status(400).send('Password and Confirm fields must match.');
     }
 
+    const Otp = generateOTP();
     const collection = db.collection('Signup');
-    const result = await collection.insertOne({ Name, Email, Password, Confirm });
+    const result = await collection.insertOne({ Name, Email, Password, Confirm, Otp, IsVerified:false });
+    sendOtpVerification(Name, Email, Otp);
+    // const collection = db.collection('Signup');
+    // const result = await collection.insertOne({ Name, Email, Password, Confirm });
 
     res.status(201).send({
         message: 'User registered successfully!',
@@ -73,6 +80,29 @@ app.post('/registerUser', async (req, res) => {
 }
 });
 
+app.post("/verifyOtp", async (req, res) => {
+  const { email, otp } = req.body;
+  const collection = db.collection('Signup');
+  const user = await collection.findOne({ Email: email });
+  if (user.Otp == otp) {
+    // Update the IsVerified field to true
+    await collection.updateOne(
+            { Email: email },
+            { $set: { IsVerified: true } }
+          );
+
+    res.status(200).send({ "success": true });
+    return;
+  }
+  res.status(400).send({ "success": false });
+})
+
+function generateOTP() {
+  // Generate a random 6-digit OTP
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  return otp.padStart(6, '0');  // Ensure the OTP is always 6 characters long
+}
+
 app.post('/login', async (req, res) => {
   try {
     const { email, password} = req.body;
@@ -80,6 +110,9 @@ app.post('/login', async (req, res) => {
     const user = await collection.findOne({Email: email });
     if (!user) {
       return res.status(404).send('User not found.');
+    }
+    if (!user.IsVerified) {
+      return res.status(401).send('User not verified.');
     }
     // Check if the password matches
     if (user.Password !== password) {
@@ -109,8 +142,8 @@ app.get('/getAllUser', authenticateToken, async (req, res) => {
 
 
 // Generate JWT Token function
-function generateToken(userId, username) {
-  return jwt.sign({ id: userId, username: username }, process.env.JWT_SECRET, { expiresIn: '1h' });
+function generateToken(userId, email) {
+  return jwt.sign({ id: userId, email: email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
 
 app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
@@ -129,6 +162,7 @@ app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
     const data = await collection.insertOne({
       clientId, fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate
     })
+    const mailResult = await sendTransportMail(req, req.body);
     res.status(200).json(data);
   } catch (err) {
     res.status(500).send('Error fetching data: ' + err.message);
@@ -149,7 +183,7 @@ function authenticateToken(req, res, next) {
   const token = req.header('Authorization')?.split(' ')[1];
   
   if (!token) {
-      return res.status(401).json({ message: 'Access denied, no token provided' });
+    return res.status(401).json({ message: 'Access denied, no token provided' });
   }
 
   jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
@@ -159,6 +193,42 @@ function authenticateToken(req, res, next) {
       req.user = user;
       next();
   });
+}
+
+async function sendTransportMail(req, details) {
+  let transporter = await getMyTransporter();
+  let user = req.user;
+  let info = await transporter.sendMail({
+    from: 'jayghetia106@gmail.com', // sender address
+    to: user.email, // list of receivers
+    subject:"Please verify the following transport request", // Subject line
+    text: "", // plain text body 
+    html: `<b>Hello ${user.email}</b> <br> 
+    <p> Source Location - ${details.fromLocation}</p><br>
+    <p> Destination Location - ${details.toLocation}</p><br>
+    <p> Weight - ${details.weight}</p><br>
+    <p> Length - ${details.length}</p><br>
+    <p> width - ${details.width}</p><br>
+    <p> height - ${details.height}</p><br>
+    <p> Payable Amount - ${details.totalPrice}</p><br>
+    <p> Booking Date - ${details.bookingDate}</p><br>
+    <p> Delivery Date - ${details.deliveryDate}</p><br>
+    `, // html body
+  }); 
+  return true;
+}
+
+async function sendOtpVerification(username, email, otp) {
+  let transporter = await getMyTransporter();
+  let info = await transporter.sendMail({
+    from: 'rishitmakadia.cs23@bmsce.ac.in', // sender address
+    to: email, // list of receivers
+    subject:"Otp Verification Email", // Subject line
+    text: "", // plain text body 
+    html: `<b>Hello ${username}</b> <br> 
+    <p> Your Otp is - <b> ${otp} </b></p><br>`, // html body
+  }); 
+  return true;
 }
 
 const port = process.env.PORT || 1000;

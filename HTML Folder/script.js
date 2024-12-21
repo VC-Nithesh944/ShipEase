@@ -6,6 +6,7 @@ function showLoginForm() {
   document.getElementById("bgimage1").style.display = "none";
   document.getElementById("main").style.display = "none";
   document.getElementById("footer").style.display = "none";
+  document.getElementById("OtpForm").style.display = "none";
 }
 
 // Function to show the Signup Form
@@ -15,6 +16,16 @@ function showSignUpForm() {
   document.getElementById("wrapped").style.display = "block";
   document.getElementById("bgimage1").style.display = "none";
   document.getElementById("footer").style.display = "none";
+  document.getElementById("OtpForm").style.display = "none";
+}
+
+function showOtpForm() {
+  document.getElementById("LoginForm").style.display = "none";
+  document.getElementById("SignupForm").style.display = "none";
+  document.getElementById("wrapped").style.display = "block";
+  document.getElementById("bgimage1").style.display = "none";
+  document.getElementById("footer").style.display = "none";
+  document.getElementById("OtpForm").style.display = "block";
 }
 
 // Function to update the navbar buttons and welcome message
@@ -69,70 +80,6 @@ document.addEventListener("DOMContentLoaded", () => {
   updateNavbarButtons(); // Update button visibility
 });
 
-// function login(event) {
-//     event.preventDefault();
-
-//     const username = document.querySelector("#LoginForm input[name='username']").value;
-//     const password = document.querySelector("#LoginForm input[name='password']").value;
-
-//     fetch('http://localhost:3000/api/login', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify({ username, password }),
-//     })
-//         .then(response => response.json())
-//         .then(data => {
-//             if (data.token) {
-//                 localStorage.setItem('jwt', data.token); // Save JWT to localStorage
-//                 alert('Login successful!');
-//                 updateNavbarButtons(); // Update the navbar buttons
-//                 document.getElementById('LoginForm').style.display = 'none';
-//                 document.getElementById('wrapped').style.display = 'none';
-//                 document.getElementById('bgimage1').style.display = 'block';
-//             } else {
-//                 alert(data.message || 'Login failed!');
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//             alert('An error occurred. Please try again.');
-//         });
-// }
-
-// async function signup(event) {
-//     event.preventDefault();
-
-//     const username = document.getElementById('signupUsername').value;
-//     const email = document.getElementById('signupEmail').value;
-//     const password = document.getElementById('signupPassword').value;
-//     const confirmPassword = document.getElementById('signupConfirmPassword').value;
-
-//     if (password !== confirmPassword) {
-//         alert('Passwords do not match. Please try again.');
-//         return;
-//     }
-
-//     try {
-//         const response = await fetch('http://localhost:3000/api/signup', {
-//             method: 'POST',
-//             headers: { 'Content-Type': 'application/json' },
-//             body: JSON.stringify({ username, email, password }),
-//         });
-
-//         const result = await response.json();
-
-//         if (response.ok) {
-//             alert('Signup successful! Please log in.');
-//             showLoginForm(); // Redirect to login form
-//         } else {
-//             alert(result.error || 'Signup failed!');
-//         }
-//     } catch (error) {
-//         console.error('Error during signup:', error);
-//         alert('An error occurred while signing up.');
-//     }
-// }
-
 function logout() {
   localStorage.removeItem("jwt"); // Remove JWT from localStorage
   document.getElementById("welcomeMessage").innerText =
@@ -167,7 +114,8 @@ async function saveUserdata(e){
     })
     .then(response => response.json())  // Assuming the response is in JSON format
     .then(data => {
-        console.log('Success:', data);  // Handle success
+      showOtpForm();
+      console.log('Success:', data);  // Handle success// Handle success
     })
     .catch((error) => {
         console.error('Error:', error);  // Handle error
@@ -209,4 +157,29 @@ async function getMyTransportRequests() {
   });
   const data = await response.json();
   console.log(data);
+}
+
+async function verifyOtp(e) {
+  e.preventDefault();
+  const email = document.getElementById("otpEmail").value;
+  const otp = document.getElementById("otpCode").value;
+  try {
+    const response = await fetch('http://localhost:1000/verifyOtp', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(
+          {
+            "otp": otp,
+            "email": email,
+          }
+        )
+    });
+    let data = await response.json();
+    if (data.success == true) {
+      showLoginForm();
+    }
+    
+} catch (e) {
+
+}
 }
