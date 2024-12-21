@@ -79,8 +79,7 @@ function populateFooter(jsonFile, containerId) {
         .catch(error => console.error('Error fetching the JSON file:', error));
 }
 
-function calculatePrice() {
-    // Get input values
+function getAllTransportVariable() {
     const fromLocation = document.getElementById("sourceLocation").value;
     const toLocation = document.getElementById("destinationLocation").value;
     const bookingType = document.getElementById("bookingType").value;
@@ -89,7 +88,14 @@ function calculatePrice() {
     const width = parseFloat(document.getElementById("width").value);
     const height = parseFloat(document.getElementById("height").value);
     const bookingDate = document.getElementById("bookingDate").value;
+    const deliveryDate = document.getElementById("delivery-date").value;
+    return { fromLocation, toLocation, bookingType, weight, length, width, height, bookingDate, deliveryDate }
+}
 
+async function calculatePrice() {
+    // Get input values
+    let { fromLocation, toLocation, bookingType, weight, length, width, height, bookingDate, deliveryDate } = getAllTransportVariable();
+    let totalPrice;
     // Validate inputs
     if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height)) {
         alert("Please fill in all required fields correctly.");
@@ -101,9 +107,11 @@ function calculatePrice() {
     const chargeableWeight = Math.max(weight, volumeWeight);
 
     // Fetch rates.json to get rates for calculation
-    fetch("rates.json")
-        .then((response) => response.json())
-        .then((rates) => {
+    // fetch("rates.json")
+    //     .then((response) => response.json())
+    //     .then((rates) => {
+        const response = await fetch("rates.json");
+        const rates = await response.json();
             // Get the rate per kg for the booking type and destination
             const ratePerKg = rates.bookingTypes?.[bookingType]?.[toLocation];
             if (!ratePerKg) {
@@ -112,20 +120,20 @@ function calculatePrice() {
             }
 
             // Calculate total price
-            const totalPrice = chargeableWeight * ratePerKg;
+            totalPrice = chargeableWeight * ratePerKg;
 
             // Display the estimated price
             document.getElementById("estimated-price").value = `₹${totalPrice.toFixed(2)}`;
 
             // Calculate and display the delivery date
             const deliveryDays = getDeliveryDays(bookingType);
-            const deliveryDate = calculateDeliveryDate(bookingDate, deliveryDays);
+            deliveryDate = calculateDeliveryDate(bookingDate, deliveryDays);
             document.getElementById("delivery-date").value = deliveryDate;
-        })
-        .catch((error) => {
-            console.error("Error fetching rates.json:", error);
-            alert("Failed to fetch rates. Please try again.");
-        });
+    return totalPrice;
+        // .catch((error) => {
+        //     console.error("Error fetching rates.json:", error);
+        //     alert("Failed to fetch rates. Please try again.");
+        // });
 }
 
 function getDeliveryDays(bookingTypes) {
@@ -156,4 +164,28 @@ function resetValues() {
     document.getElementById('bookingDate').value = '';
     document.getElementById('estimated-price').value = '';
     document.getElementById('delivery-date').value = '';
+}
+
+async function addTransportData() {
+    let totalPrice = await calculatePrice();
+    let transportData = getAllTransportVariable();
+    transportData.totalPrice = totalPrice;
+    const token = localStorage.getItem('Authorization');
+
+    if (!token) {
+        console.log("Please login for the transport")
+        return;
+    }
+    
+    const response = await fetch('http://localhost:1000/api/saveTransportData', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization':token,
+        },
+        body: JSON.stringify(transportData)
+    });
+    const data = await response.json();
+    console.log(data);
+
 }

@@ -192,7 +192,21 @@ async function login(e) {
     const data = await response.json();  // Use await to get the response data
 
     if (data["message"] == "Login-successful") {
-        localStorage.setItem("userId", data["userId"]);
+      // localStorage.setItem("userId", data["userId"]);
+      localStorage.setItem("Authorization", "Berear " + data["token"]);
         // here redirection logic for Home page 
     }
+}
+
+// Fetching all data from Mongo for Sign IN user (front-end incomplete)
+async function getMyTransportRequests() {
+  const response = await fetch('http://localhost:1000/api/getMyTransportRequests', {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+          'Authorization': localStorage.getItem('Authorization'),
+       },
+  });
+  const data = await response.json();
+  console.log(data);
 }
