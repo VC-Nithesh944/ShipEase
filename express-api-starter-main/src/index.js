@@ -8,7 +8,8 @@ dotenv.config(); // Load environment variables from .env file
 const nodemailer = require('nodemailer');
 const { getMyTransporter } = require('./mailSender');
 
-const uri = process.env.MONGODB_URL; // Example: mongodb://localhost:27017
+const uri = process.env.MONGODB_URL; // Example: mongodb://localhost:27017 
+// // Example: mongodb://localhost:27017
 const client = new MongoClient(uri);
 
 
@@ -199,7 +200,7 @@ async function sendTransportMail(req, details) {
   let transporter = await getMyTransporter();
   let user = req.user;
   let info = await transporter.sendMail({
-    from: 'jayghetia106@gmail.com', // sender address
+    from: 'rishitmakadia.cs23@bmsce.ac.in', // sender address
     to: user.email, // list of receivers
     subject:"Please verify the following transport request", // Subject line
     text: "", // plain text body 
