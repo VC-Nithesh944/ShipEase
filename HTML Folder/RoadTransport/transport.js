@@ -188,4 +188,15 @@ async function addTransportData() {
     const data = await response.json();
     console.log(data);
 
+    if (response.ok) {
+        // Show a success message
+        alert("Shipment Successfully Placed!");
+
+        // Reset form values
+        resetValues();
+    } else {
+        // Handle failure response
+        alert(data.message || "Failed to place shipment. Please try again.");
+    }
+
 }

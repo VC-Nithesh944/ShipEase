@@ -144,8 +144,14 @@ async function login(e) {
     if (data["message"] == "Login-successful") {
       // localStorage.setItem("userId", data["userId"]);
       localStorage.setItem("Authorization", "Berear " + data["token"]);
-        // here redirection logic for Home page 
+      // here redirection logic for Home page 
+      alert("Login Successful!");
+      window.location.href = "./index.html";
     }
+    else {
+      // Handle login failure (e.g., wrong credentials)
+      alert(data.message || "Login failed. Please try again.");
+  }
 }
 
 // Fetching all data from Mongo for Sign IN user (front-end incomplete)
@@ -185,3 +191,4 @@ async function verifyOtp(e) {
 
 }
 }
+

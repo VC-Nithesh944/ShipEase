@@ -207,10 +207,10 @@ async function sendTransportMail(req, details) {
     html: `<b>Hello ${user.email}</b> <br> 
     <p> Source Location - ${details.fromLocation}</p><br>
     <p> Destination Location - ${details.toLocation}</p><br>
-    <p> Weight - ${details.weight}</p><br>
-    <p> Length - ${details.length}</p><br>
-    <p> width - ${details.width}</p><br>
-    <p> height - ${details.height}</p><br>
+    <p> Weight - ${details.weight} kg</p><br>
+    <p> Length - ${details.length} cm</p><br>
+    <p> width - ${details.width} cm</p><br>
+    <p> height - ${details.height} cm</p><br>
     <p> Payable Amount - ${details.totalPrice}</p><br>
     <p> Booking Date - ${details.bookingDate}</p><br>
     <p> Delivery Date - ${details.deliveryDate}</p><br>

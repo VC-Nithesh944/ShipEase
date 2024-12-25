@@ -203,45 +203,7 @@
         <div class="foot-panel2" id="footPanel"></div>
 
         <script>
-            // Populate footer dynamically
-            // function populateFooter(jsonFile, containerId) {
-            //     fetch(jsonFile)
-            //         .then(response => {
-            //             if (!response.ok) {
-            //                 throw new Error('Network response was not ok');
-            //             }
-            //             return response.json();
-            //         })
-            //         .then(data => {
-            //             const container = document.getElementById(containerId);
-
-            //             // Function to create a section
-            //             function createSection(title, items) {
-            //                 const ul = document.createElement('ul');
-            //                 const titleElement = document.createElement('p');
-            //                 titleElement.textContent = title;
-            //                 ul.appendChild(titleElement);
-
-            //                 items.forEach(item => {
-            //                     const anchor = document.createElement('a');
-            //                     anchor.textContent = item;
-            //                     anchor.href = "#"; // Optional: Add appropriate links
-            //                     ul.appendChild(anchor);
-            //                 });
-
-            //                 return ul;
-            //             }
-
-            //             // Add sections dynamically
-            //             container.appendChild(createSection("Our Main Branches", data.branches));
-            //             container.appendChild(createSection("Services Available", data.services));
-            //             container.appendChild(createSection("", data.otherCities)); // Blank title
-            //             container.appendChild(createSection("Soon Available at", data.soonAvailable));
-            //         })
-            //         .catch(error => console.error('Error fetching the JSON file:', error));
-            // }
-
-            // Call the function
+            
             populateFooter('transFooter.json', 'footPanel');
         </script>
 
