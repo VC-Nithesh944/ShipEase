@@ -10,7 +10,7 @@ body {
     background-color: #00e5ff;
     color: #ffffff;
     text-align: center;
-    padding: 22px;
+    padding: 12px;
     position: relative;
 }
 
@@ -19,7 +19,7 @@ body {
     height: auto;
     position: absolute;
     top: 0px;
-    left: 10px;
+    left: 0px;
 }
 
 .page-header h1 {
