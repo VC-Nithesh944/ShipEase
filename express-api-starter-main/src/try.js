@@ -166,3 +166,45 @@ app.listen(port, () => {
   console.log(`Listening: http://localhost:${port}`);
   /* eslint-enable no-console */
 });
+
+
+async function login(e) {
+  e.preventDefault();
+
+  const Email = document.getElementById("loginUsername").value;
+  const Password = document.getElementById("loginPassword").value;
+
+  try {
+      const response = await fetch('http://localhost:1000/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+              "password": Password,
+              "email": Email,
+          })
+      });
+
+      const data = await response.json(); // Use await to get the response data
+
+      if (data.message === "Login-successful") {
+          // Store the token in localStorage
+          localStorage.setItem("Authorization", "Bearer " + data.token);
+
+          // Show a pop-up
+          alert("Login Successful!");
+
+          // Redirect to the home page
+          window.location.href = "/home"; // Update with your actual home page URL
+      } else {
+          // Handle login failure (e.g., wrong credentials)
+          alert(data.message || "Login failed. Please try again.");
+      }
+  } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
+  }
+}
+
+import Swal from 'sweetalert2'; // If using module bundlers
+
+

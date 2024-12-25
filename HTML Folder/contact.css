@@ -39,7 +39,7 @@ body {
 .info{
     background-color: white;
     /* background-color: #85f3ff; */
-    padding: 3px 0;
+    padding: 1px 0;
     text-align: center;
 }
 
@@ -64,7 +64,7 @@ body {
 .contact-form{
     position: relative;
     width: 1000px;
-    margin: 60px 30px 0 30px;
+    margin: 60px 30px 0 177px;
     padding: 0px 20px 0 20px;
     height: 500px;
     background: #ffffff;
@@ -169,7 +169,8 @@ body {
         align-items:center;          /* Center logos vertically */
         flex-wrap:wrap;              /* Wrap to next line on small screens */
         gap: 20px;                    /* Space between logos */
-        padding: 20px;                /* Optional padding around container */
+        padding: 20px;   
+        margin-left: 155px;             /* Optional padding around container */
 }
 
 .insta{

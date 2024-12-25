@@ -130,13 +130,13 @@ main {
 /* Features Section */
 .features {
     display: flex;
-    margin-top: 70px;
+    margin-top: 100px;
     justify-content: center;
     align-items: flex-start;
     gap: 2rem;
     /* Space between the feature boxes */
     padding: 2rem;
-    background-color: #81ddff;
+    background-color: #1ac6ff;
     position: relative;
     flex-wrap: wrap;
     /* Ensures responsiveness on smaller screens */
@@ -173,12 +173,12 @@ main {
 /* Circular Image Above Features */
 .circle-image {
     position: absolute;
-    top: -100px;
+    top: -108px;
     /* Ensure it doesn't overlap with the text */
     left: 50%;
     transform: translateX(-50%);
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     background-image: url("Pictures/features.jpg");
     /* Replace with your image path */
     background-size: cover;
@@ -205,7 +205,7 @@ main {
     color: #fff;
     text-align: center;
     padding: 20px 0;
-    margin-top: 50px;
+    margin-top: 0px;
 }
 
 .page-footer p {
@@ -297,4 +297,17 @@ h2 {
 .signreg-link a:hover {
     color: #0097a7;
     text-decoration: underline;
+}
+
+.video-container {
+    width: 100%;
+    max-width: 100%; /* Ensures it doesn't exceed the container size */
+    margin: 0 auto; /* Center if the parent container has width constraints */
+}
+
+.video-container video {
+    width: 55%;
+    height: auto; /* Maintains aspect ratio */
+    display: block; /* Removes unwanted inline spacing */
+    margin-left: 330px;
 }
