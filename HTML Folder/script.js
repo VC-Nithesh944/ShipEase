@@ -15,6 +15,7 @@ function showSignUpForm() {
   document.getElementById("SignupForm").style.display = "block";
   document.getElementById("wrapped").style.display = "block";
   document.getElementById("bgimage1").style.display = "none";
+  document.getElementById("main").style.display = "none";
   document.getElementById("footer").style.display = "none";
   document.getElementById("OtpForm").style.display = "none";
 }
@@ -24,6 +25,7 @@ function showOtpForm() {
   document.getElementById("SignupForm").style.display = "none";
   document.getElementById("wrapped").style.display = "block";
   document.getElementById("bgimage1").style.display = "none";
+  document.getElementById("main").style.display = "none";
   document.getElementById("footer").style.display = "none";
   document.getElementById("OtpForm").style.display = "block";
 }
