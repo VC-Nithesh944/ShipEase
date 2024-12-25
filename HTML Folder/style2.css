@@ -144,11 +144,12 @@ main {
 
 .features .feature {
     text-align: center;
-    width: 250px;
+    width: 385px;
     /* Set a consistent width for each feature */
-    background-color: #f9f9f9;
+    background-color: #67abff;
     padding: 1.5rem;
     border-radius: 12px;
+    border: solid 4px black;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
