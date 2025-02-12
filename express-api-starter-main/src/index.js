@@ -1,3 +1,5 @@
+//npm run dev
+
 const { MongoClient } = require('mongodb');
 const app = require('./app');
 const jwt = require('jsonwebtoken');
