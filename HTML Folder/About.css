@@ -13,21 +13,23 @@ body {
 }
 
 .page-header {
+    /* background-color: #cdfaff; */
     background-color: #00e5ff;
+    /* background-color: #48cae4; */
     color: #ffffff;
-    padding: 50px 0;
+    padding: 17px 0;
     text-align: center;
 }
 
 .page-header .img {
-    width: 168.5px;
+    width: 103.5px;
     height: auto;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 0;
 
-    border: 2px solid #00e5ff;
+    /* border: 2px solid #00e5ff; */
 }
 
 .page-header h1 {
@@ -36,8 +38,10 @@ body {
 }
 
 .about-intro {
-    padding: 50px 0;
-    background-color: #ffffff;
+    padding: 30px 0;
+    /* background-color: #48cae4; */
+    /* background-color: #00e5ff; */
+    background-color: #85f3ff;
     text-align: center;
 }
 
@@ -49,8 +53,9 @@ body {
 
 /* Mission Section */
 .about-mission {
-    background-color: #85f3ff;
-    padding: 50px 0;
+    /* background-color: #85f3ff; */
+    background-color: #00e5ff;
+    padding: 30px 0;
     text-align: center;
 }
 
@@ -63,6 +68,7 @@ body {
 .about-team {
     padding: 50px 0;
     text-align: center;
+    background-color: #85f3ff;
 }
 
 .about-team h2 {
@@ -73,7 +79,7 @@ body {
 .team-images {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 100px;
     margin-top: 30px;
 }
 
@@ -119,8 +125,8 @@ img {
     background-color: #00e5ff;
     color: #fff;
     text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
+    padding: 1px 0;
+    margin-top: 0px;
 }
 
 .page-footer p {

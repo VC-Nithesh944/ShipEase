@@ -4,7 +4,7 @@ body {
     font-family : 'Poppins';
     margin: 0;
     padding: 0;
-    background-color: #EEDC82;
+    background-color: #69f3ff;
 }
 
 .container {
@@ -15,7 +15,7 @@ body {
 
 
 .page-header {
-    background-color: #ff9100;
+    background-color: #1ac6ff;
     color: #ffffff;
     text-align: center;
     padding: 6px;
@@ -221,20 +221,6 @@ a:hover {
 /*  */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .button-container {
     text-align: center; /* Centers the button horizontally */
     margin-top: 0px;    /* Adds some space from the top of the page */
@@ -328,48 +314,6 @@ a:hover {
     bottom: 97px;
     border-radius: 20px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
