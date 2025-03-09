@@ -20,14 +20,4 @@ The application allows users to register, log in, and manage their shipments, or
 - **Authentication**: JWT (JSON Web Tokens)
 - **Security**: Bcrypt for password hashing
 
-### Prerequisites
-Make sure you have the following installed on your computer: 
-- [Node.js](https://nodejs.org/)
-- [MySQL](https://www.mysql.com/) or [MongoDB](https://www.mongodb.com/) (based on your database choice)
-- [Git](https://git-scm.com/)
 
-### Installation
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/ShipEase.git
