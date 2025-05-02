@@ -11,7 +11,7 @@ async function getMyTransporter() {
         auth: {
           user: process.env.EMAIL,
         //   pass: process.env.PWD,
-          pass: "buym asnu jsus meyn",
+          pass: "tybc zxub bzjb pply",
         },
       });
 }
