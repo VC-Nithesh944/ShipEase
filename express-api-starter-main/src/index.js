@@ -10,6 +10,10 @@ dotenv.config(); // Load environment variables from .env file
 const nodemailer = require('nodemailer');
 const { getMyTransporter } = require('./mailSender');
 
+const { generateKeys, encrypt, decrypt } = require('../../Backend/rsa_crypto'); // Import RSA functions
+const { sign, verify } = require('../../Backend/rsa_signature'); // Import signature functions
+const crypto = require('crypto'); // For hashing if allowed
+
 const uri = process.env.MONGODB_URL; // Example: mongodb://localhost:27017 
 // // Example: mongodb://localhost:27017
 const client = new MongoClient(uri);
@@ -73,6 +77,15 @@ app.post('/registerUser', async (req, res) => {
     sendOtpVerification(Name, Email, Otp);
     // const collection = db.collection('Signup');
     // const result = await collection.insertOne({ Name, Email, Password, Confirm });
+
+    // Generate RSA key pair for the new user
+    const { publicKey, privateKey } = generateKeys();
+    const publicKeyString = JSON.stringify(publicKey);
+
+    // Store public key in the secure_users collection
+    const secureUsersCollection = db.collection('secure_users');
+    const secureUserResult = await secureUsersCollection.insertOne({ userId: result.insertedId.toString(), publicKey: publicKeyString });
+    console.log('Public key saved for user:', result.insertedId);
 
     res.status(201).send({
         message: 'User registered successfully!',
@@ -149,26 +162,89 @@ function generateToken(userId, email) {
   return jwt.sign({ id: userId, email: email }, process.env.JWT_SECRET, { expiresIn: '1h' });
 }
 
+// app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
+//   try {
+//     // const {}
+//     const {fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate} = req.body;
+
+//     const clientId = req.user.id;
+//     // Validate inputs
+//     if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height) || !clientId || !bookingDate || !deliveryDate ) {
+//       res.status(400).send('Please enter all the fields');
+//       return;
+//     }
+
+//     const collection = db.collection('Transport'); // Replace with your collection name
+//     const data = await collection.insertOne({
+//       clientId, fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate
+//     })
+//     const mailResult = await sendTransportMail(req, req.body);
+//     res.status(200).json(data);
+//   } catch (err) {
+//     res.status(500).send('Error fetching data: ' + err.message);
+//   }
+// });
+
 app.post('/api/saveTransportData', authenticateToken, async (req, res) => {
   try {
-    // const {}
     const {fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate} = req.body;
-
     const clientId = req.user.id;
-    // Validate inputs
+
+    // Validate inputs (as before)
     if (!fromLocation || !toLocation || !bookingType || isNaN(weight) || isNaN(length) || isNaN(width) || isNaN(height) || !clientId || !bookingDate || !deliveryDate ) {
       res.status(400).send('Please enter all the fields');
       return;
     }
 
-    const collection = db.collection('Transport'); // Replace with your collection name
-    const data = await collection.insertOne({
+    const transportCollection = db.collection('Transport');
+    const originalTransportData = await transportCollection.insertOne({
       clientId, fromLocation, toLocation, bookingType, weight, length, width, height, totalPrice, bookingDate, deliveryDate
-    })
+    });
+    console.log('Original transport data saved:', originalTransportData.insertedId);
+
+    // Get the user's public key for encryption
+    const secureUsersCollection = db.collection('secure_users');
+    const userPublicKeyData = await secureUsersCollection.findOne({ userId: clientId });
+
+    if (!userPublicKeyData || !userPublicKeyData.publicKey) {
+      console.error('Public key not found for user:', clientId);
+      return res.status(500).send('Public key not found for user');
+    }
+
+    const publicKey = JSON.parse(userPublicKeyData.publicKey);
+
+    // Generate a new key pair for this booking (INSECURE FOR PRODUCTION)
+    const { publicKey: bookingPublicKey, privateKey: bookingPrivateKey } = generateKeys();
+    const bookingPublicKeyString = JSON.stringify(bookingPublicKey);
+
+    // Encrypt the booking data
+    const encryptedBookingData = {};
+    for (const key in req.body) {
+      if (typeof req.body[key] === 'string') {
+        encryptedBookingData[key] = encrypt(bookingPublicKey, req.body[key]); // Use booking's public key
+      } else {
+        encryptedBookingData[key] = req.body[key]; // Keep non-string data as is
+      }
+    }
+
+    // Sign the original booking data using the newly generated private key
+    const signature = sign(bookingPrivateKey, JSON.stringify(req.body));
+
+    // Store the encrypted data, signature, and the booking's public key
+    const secureTransportCollection = db.collection('secure_transport');
+    const secureTransportResult = await secureTransportCollection.insertOne({
+      clientId,
+      encryptedData: encryptedBookingData,
+      signature: signature,
+      publicKey: bookingPublicKeyString, // Store the booking's public key
+      bookingDate: req.body.bookingDate // Or a consistent date format
+    });
+    console.log('Secure transport data saved:', secureTransportResult.insertedId);
+
     const mailResult = await sendTransportMail(req, req.body);
-    res.status(200).json(data);
+    res.status(200).json(originalTransportData); // Or a success message
   } catch (err) {
-    res.status(500).send('Error fetching data: ' + err.message);
+    res.status(500).send('Error saving data: ' + err.message);
   }
 });
 

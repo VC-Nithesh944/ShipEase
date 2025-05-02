@@ -9,7 +9,7 @@ Thumbs.db
 
 # Ignore environment and dependency files
 node_modules/
-.env
+# .env
 .env.local
 .env.production
 .env.development
