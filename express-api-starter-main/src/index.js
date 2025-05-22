@@ -1,4 +1,7 @@
 //npm run dev
+//lsof -i :1000
+//kill -9 ____
+
 
 const { MongoClient } = require('mongodb');
 const app = require('./app');
