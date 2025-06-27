@@ -13,6 +13,7 @@ dotenv.config(); // Load environment variables from .env file
 const nodemailer = require('nodemailer');
 const { getMyTransporter } = require('./mailSender');
 
+const { performChosenPlaintextAttack } = require('../../Backend/chosen_plaintext_attack');
 const { generateKeys, encrypt, decrypt } = require('../../Backend/rsa_crypto'); // Import RSA functions
 const { sign, verify } = require('../../Backend/rsa_signature'); // Import signature functions
 const crypto = require('crypto'); // For hashing if allowed
@@ -312,6 +313,33 @@ async function sendOtpVerification(username, email, otp) {
   }); 
   return true;
 }
+
+
+app.get('/api/demonstrateAttack', authenticateToken, async (req, res) => {
+  try {
+    if (!db) {
+      throw new Error('Database not connected');
+    }
+    
+    const attackResults = await performChosenPlaintextAttack(db);
+    
+    // Store results
+    const auditsCollection = db.collection('security_audits');
+    await auditsCollection.insertOne({
+      userId: req.user.id,
+      attackType: 'chosen_plaintext',
+      results: attackResults,
+      timestamp: new Date()
+    });
+    
+    res.status(200).json(attackResults);
+  } catch (err) {
+    res.status(500).json({
+      error: 'Attack demonstration failed',
+      details: err.message
+    });
+  }
+});
 
 const port = process.env.PORT || 1000;
 app.listen(port, () => {

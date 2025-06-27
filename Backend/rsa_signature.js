@@ -12,16 +12,16 @@ function simpleHash(data) {
   return hash.toString();
 }
 
-
 function sign(privateKey, data) {
-  const hash = simpleHash(data);
-  return signWithPrivateKey(privateKey, hash);
+  const hash = simpleHash(data);   // Create hash of the data
+  return signWithPrivateKey(privateKey, hash);   // Encrypt hash with private key (instead of using SHA for simplicity we used RSA Again)
 }
 
 function verify(publicKey, data, signature) {
-  const originalHash = simpleHash(data);
-  const decryptedSignature = decrypt(publicKey, signature);
+  const originalHash = simpleHash(data);  // Recompute hash of original data
+  const decryptedSignature = decrypt(publicKey, signature);   // Decrypt signature with public ke
   return originalHash === decryptedSignature;
 }
 
+// If comparison is same then only it gets saved in MONGODB
 module.exports = { sign, verify };

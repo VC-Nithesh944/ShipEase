@@ -1,6 +1,5 @@
 // Backend/rsa_crypto.js
 
-
 function isPrime(num) {
     if (num <= 1) return false;
     for (let i = 2; i <= Math.sqrt(num); i++) {
@@ -17,6 +16,7 @@ function isPrime(num) {
     return a;
   }
   
+  // To find GCD
   function extendedEuclideanAlgorithm(a, b) {
     if (a === 0) {
       return [b, 0, 1];
@@ -24,12 +24,12 @@ function isPrime(num) {
     const [g, x1, y1] = extendedEuclideanAlgorithm(b % a, a);
     const x = y1 - Math.floor(b / a) * x1;
     const y = x1;
-    return [g, x, y];
+    return [g, x, y]; // Return GCD and coefficients
   }
   
   function modInverse(a, m) {
     const [g, x] = extendedEuclideanAlgorithm(a, m);
-    if (g !== 1) {
+    if (g !== 1) {                                  //// Inverse only exists if GCD is 1
       throw new Error('Modular inverse does not exist');
     }
     return (x % m + m) % m;
